@@ -56,70 +56,140 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
   const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const titleWords = "Quality & Horizon".split(" ");
+
   return (
-    <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-brand-ink">
+      {/* Background Parallax Layer */}
       <motion.div
         style={{ y: y1, scale, opacity }}
+        animate={{
+          x: -mousePosition.x * 0.5,
+          y: -mousePosition.y * 0.5 + (y1 as any).get()
+        }}
+        transition={{ type: "spring", damping: 50, stiffness: 100 }}
         className="absolute inset-0 z-0"
       >
         <img
           src="/images/hero_ontario_terminal.png"
           alt="Ontario Food Terminal"
-          className="w-full h-full object-cover brightness-[0.5]"
+          className="w-full h-full object-cover brightness-[0.4] scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/40 via-transparent to-brand-cream" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
       </motion.div>
+
+      {/* Floating Light Rays */}
+      <div className="absolute inset-0 pointer-events-none z-[1]">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/4 -left-1/4 w-[100vw] h-[100vw] bg-brand-gold/10 rounded-full blur-[150px]"
+        />
+      </div>
 
       {/* Decorative Floating Text */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
         <motion.h2
+          style={{ x: mousePosition.x * 2, y: mousePosition.y * 2 }}
           initial={{ opacity: 0, scale: 1.2 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ duration: 1.5 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           className="text-[40vw] font-serif text-white text-outline leading-none font-black italic select-none"
         >
           2020
         </motion.h2>
       </div>
 
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 py-32 lg:py-0">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-end">
           <div className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="h-px w-12 bg-brand-gold" />
-                <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                  Est. 2020 • Wholesale Excellence
-                </span>
-              </div>
-              <h1 className="text-5xl md:text-7xl lg:text-[11vw] font-serif text-white leading-[0.85] tracking-tighter mb-12">
-                Quality <br />
-                <span className="italic font-normal text-brand-cream/90">& Horizon</span>
-              </h1>
-            </motion.div>
+            <div className="overflow-hidden">
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="flex items-center gap-4 mb-8"
+                >
+                  <div className="h-px w-12 bg-brand-gold" />
+                  <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
+                    Est. 2020 • Wholesale Excellence
+                  </span>
+                </motion.div>
+
+                <h1 className="text-5xl md:text-8xl lg:text-[12vw] font-serif text-white leading-[0.85] md:leading-[0.8] tracking-tighter mb-8 md:mb-12">
+                  {titleWords.map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 40, rotateX: -45 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{
+                        delay: 0.8 + (i * 0.2),
+                        duration: 1,
+                        ease: [0.16, 1, 0.3, 1]
+                      }}
+                      className={cn(
+                        "inline-block mr-[0.2em]",
+                        word === "&" ? "italic font-normal text-brand-cream/80" : ""
+                      )}
+                    >
+                      {word}
+                      {i === 0 && <span className="hidden md:inline"><br /></span>}
+                    </motion.span>
+                  ))}
+                </h1>
+              </motion.div>
+            </div>
           </div>
 
           <div className="lg:col-span-4 lg:pb-12">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-card p-6 md:p-8 rounded-3xl border-white/10"
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.2, delay: 1.2, ease: "easeOut" }}
+              className="glass-card p-6 md:p-10 rounded-2xl md:rounded-[3rem] border border-white/10 relative overflow-hidden group"
             >
-              <p className="text-brand-cream/80 text-base md:text-lg font-light leading-relaxed mb-8 text-balance">
-                A trusted name at the Ontario Food Terminal.
-                Built on years of hands-on experience and an uncompromising commitment to quality.
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <p className="relative z-10 text-brand-cream/80 text-base md:text-xl font-light leading-relaxed mb-8 md:mb-10 text-balance italic">
+                "A trusted name at the Ontario Food Terminal. Built on professional expertise and an uncompromising commitment to quality."
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="relative z-10 flex flex-wrap gap-4">
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
-                  className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white transition-all group flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white transition-all transform hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(197,160,89,0.5)] group flex items-center justify-center gap-3"
                 >
-                  Wholesale Inquiry <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Wholesale Inquiry
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
@@ -127,23 +197,46 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute left-12 bottom-12 hidden xl:block">
-        <div className="flex flex-col gap-8">
+      <div className="absolute left-12 bottom-12 hidden xl:block overflow-hidden">
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="flex flex-col gap-8"
+        >
           <div className="vertical-rl text-[10px] uppercase tracking-[0.5em] text-white/40 font-bold">
             STRONACH & SONS 2020 — TORONTO, ON
           </div>
           <div className="w-px h-24 bg-gradient-to-b from-white/40 to-transparent mx-auto" />
-        </div>
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-12 right-12 hidden md:flex items-center gap-4 text-white/40"
+      >
+        <span className="text-[9px] uppercase tracking-[0.3em] font-bold">Scroll to Explore</span>
+        <div className="w-12 h-px bg-white/20" />
+      </motion.div>
     </section>
   );
 };
 
 const AboutSectionSnapshot = () => {
   return (
-    <section id="our-legacy" className="py-20 md:py-32 bg-brand-cream relative overflow-hidden">
+    <section id="our-legacy" className="py-24 md:py-48 bg-brand-cream relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/5 to-transparent pointer-events-none" />
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
-        <div className="order-2 lg:order-1">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="order-2 lg:order-1"
+        >
           <span className="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-black mb-6 block">About Us</span>
           <h2 className="text-4xl md:text-7xl font-serif mb-10 leading-[1.1] tracking-tight">
             Driven by <br />
@@ -171,7 +264,7 @@ const AboutSectionSnapshot = () => {
               <div className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-brand-ink/40">Terminal Presence</div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="order-1 lg:order-2 relative px-4 md:px-0">
           <motion.div
@@ -192,7 +285,7 @@ const AboutSectionSnapshot = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
@@ -205,15 +298,21 @@ const HeritageTimeline = () => {
   ];
 
   return (
-    <section id="heritage-timeline" className="py-20 md:py-32 bg-brand-ink text-brand-cream relative overflow-hidden">
+    <section id="heritage-timeline" className="py-24 md:py-48 bg-brand-ink text-brand-cream relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-brand-cream to-transparent opacity-10 pointer-events-none" />
       <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-        <div className="text-center mb-16 md:mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 md:mb-32"
+        >
           <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Journey</span>
-          <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] tracking-tighter">
+          <h2 className="text-5xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
             A Legacy of <br />
             <span className="italic text-brand-cream/60">Excellence</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-brand-gold/20 hidden md:block" />
@@ -262,7 +361,7 @@ const MarketplaceTicker = () => {
   ];
 
   return (
-    <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
+    <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10 relative z-20">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(3)].map((_, i) => ( // Repeat items to ensure continuous scroll
           <React.Fragment key={i}>
@@ -276,6 +375,76 @@ const MarketplaceTicker = () => {
         ))}
       </div>
     </div>
+  );
+};
+
+const TerminalPulse = () => {
+  const stats = [
+    { label: 'Active Cold Chain', value: 124, unit: 'Units', icon: Activity },
+    { label: 'Network Producers', value: 850, unit: 'Partners', icon: Globe },
+    { label: 'Daily Inspection', value: 12, unit: 'K Pallets', icon: ShieldCheck },
+    { label: 'Terminal Uptime', value: 99.9, unit: '%', icon: Clock }
+  ];
+
+  return (
+    <section className="py-24 md:py-48 bg-brand-ink text-brand-cream relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div className="grid grid-cols-12 h-full w-full">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="border-r border-white/20 h-full" />
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-12">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">Live Pulse • Terminal Action</span>
+            </div>
+            <h2 className="text-5xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
+              The Engine of <br />
+              <span className="italic text-brand-cream/40">Freshness.</span>
+            </h2>
+          </div>
+          <p className="text-brand-cream/40 text-sm md:text-base max-w-xs font-mono">
+            {">"} Real-time monitoring of distribution metrics and cold-chain integrity across the Ontario Food Terminal.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-[3rem] overflow-hidden border border-white/10">
+          {stats.map((stat, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="bg-brand-ink p-12 md:p-16 group hover:bg-brand-green transition-colors duration-700"
+            >
+              <stat.icon className="w-8 h-8 text-brand-gold mb-12 group-hover:scale-110 transition-transform" />
+              <div className="space-y-4">
+                <div className="flex items-baseline gap-2">
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="text-5xl md:text-7xl font-serif"
+                  >
+                    {stat.value}
+                  </motion.span>
+                  <span className="text-brand-gold font-mono text-xs uppercase">{stat.unit}</span>
+                </div>
+                <div className="h-px w-12 bg-white/20 group-hover:w-full transition-all duration-700" />
+                <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40 group-hover:text-white/80 transition-colors">
+                  {stat.label}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -311,8 +480,81 @@ const ProduceGrid = () => {
     }
   ];
 
+  const TiltCard = ({ cat, idx }: { cat: any, idx: number }) => {
+    const [rotateX, setRotateX] = useState(0);
+    const [rotateY, setRotateY] = useState(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (window.innerWidth < 1024) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rX = ((y - centerY) / centerY) * -10;
+      const rY = ((x - centerX) / centerX) * 10;
+      setRotateX(rX);
+      setRotateY(rY);
+    };
+
+    const handleMouseLeave = () => {
+      setRotateX(0);
+      setRotateY(0);
+    };
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: idx * 0.1, duration: 0.8 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        animate={{ rotateX, rotateY }}
+        className={cn(
+          "group relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] cursor-pointer perspective-1000",
+          cat.size === 'large' ? "md:col-span-7 h-[400px] md:h-[600px]" : "md:col-span-5 h-[400px] md:h-[600px]"
+        )}
+      >
+        <motion.div
+          className="w-full h-full"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img
+            src={cat.img}
+            alt={cat.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+          />
+        </motion.div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+
+        <div className="absolute top-10 right-10">
+          <div className="bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full">
+            {cat.tag}
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12 text-white">
+          <div className="flex items-end justify-between gap-6 md:gap-8">
+            <div className="max-w-md">
+              <h3 className="text-3xl md:text-5xl font-serif mb-2 md:mb-4 group-hover:italic transition-all duration-500">{cat.title}</h3>
+              <p className="text-white/60 text-xs md:text-sm leading-relaxed md:opacity-0 md:group-hover:opacity-100 transition-all duration-700 md:translate-y-4 md:group-hover:translate-y-0">
+                {cat.desc}
+              </p>
+            </div>
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-brand-ink transition-all duration-500 flex-shrink-0">
+              <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
-    <section id="produce" className="py-20 md:py-32 px-6 md:px-12 max-w-[1800px] mx-auto">
+    <section id="produce" className="py-20 md:py-32 px-6 md:px-12 max-w-[1800px] mx-auto relative z-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-12">
         <div className="max-w-3xl">
           <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">The Collection</span>
@@ -334,46 +576,9 @@ const ProduceGrid = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         {categories.map((cat, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.1, duration: 0.8 }}
-            className={cn(
-              "group relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] cursor-pointer",
-              cat.size === 'large' ? "md:col-span-7 h-[400px] md:h-[600px]" : "md:col-span-5 h-[400px] md:h-[600px]"
-            )}
-          >
-            <img
-              src={cat.img}
-              alt={cat.title}
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
-
-            <div className="absolute top-10 right-10">
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full">
-                {cat.tag}
-              </div>
-            </div>
-
-            <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12 text-white">
-              <div className="flex items-end justify-between gap-6 md:gap-8">
-                <div className="max-w-md">
-                  <h3 className="text-3xl md:text-5xl font-serif mb-2 md:mb-4 group-hover:italic transition-all duration-500">{cat.title}</h3>
-                  <p className="text-white/60 text-xs md:text-sm leading-relaxed md:opacity-0 md:group-hover:opacity-100 transition-all duration-700 md:translate-y-4 md:group-hover:translate-y-0">
-                    {cat.desc}
-                  </p>
-                </div>
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-brand-ink transition-all duration-500 flex-shrink-0">
-                  <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <TiltCard key={idx} cat={cat} idx={idx} />
         ))}
       </div>
     </section>
@@ -632,11 +837,53 @@ const CommitmentSection = () => {
   );
 };
 
+const FloatingAssets = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (isMobile) return null;
+
+  return (
+    <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
+      <motion.div
+        animate={{
+          y: [0, -100, 0],
+          rotate: [0, 15, 0],
+          x: [0, 50, 0]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-10 w-32 h-32 opacity-10"
+      >
+        <Leaf className="w-full h-full text-brand-gold" />
+      </motion.div>
+      <motion.div
+        animate={{
+          y: [0, 150, 0],
+          rotate: [0, -20, 0],
+          x: [0, -30, 0]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-2/3 right-10 w-48 h-48 opacity-10"
+      >
+        <Leaf className="w-full h-full text-brand-olive" />
+      </motion.div>
+    </div>
+  );
+};
+
 const HomePage = () => {
   return (
     <div className="relative overflow-hidden">
+      <FloatingAssets />
       <Hero />
       <MarketplaceTicker />
+      <TerminalPulse />
       <AboutSectionSnapshot />
       <HeritageTimeline />
       <ProduceGrid />
