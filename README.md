@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Stronach & Sons
 
-# Run and deploy your AI Studio app
+Premium wholesale produce supplier at the Ontario Food Terminal. Rooted in tradition, driven by progress.
 
-This contains everything you need to run your app locally.
+## Overview
 
-View your app in AI Studio: https://ai.studio/apps/f929d62a-82d2-4295-9dcb-aadad617e1c9
+Stronach & Sons is a leading wholesale produce supplier in Ontario, providing high-quality fruits and vegetables to retailers, restaurants, and foodservice operations.
 
-## Run Locally
+## Development
 
-**Prerequisites:**  Node.js
+### Prerequisites
+- Node.js (v18+)
+- npm
 
+### Setup
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Build
+To create a production build:
+```bash
+npm run build
+```
+
+## Tech Stack
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
