@@ -79,11 +79,11 @@ export const Navbar = () => {
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 bg-brand-cream z-[60] p-12 flex flex-col justify-between"
+                        className="fixed inset-0 bg-brand-cream z-[9999] p-12 flex flex-col justify-between"
                     >
                         <div className="flex justify-between items-center">
                             <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>

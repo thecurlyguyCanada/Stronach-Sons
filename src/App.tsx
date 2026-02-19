@@ -96,19 +96,23 @@ const Hero = () => {
       {/* Background Parallax Layer */}
       <motion.div
         style={isMobile ? { opacity } : { y: y1, scale, opacity }}
-        animate={isMobile ? undefined : {
-          x: -mousePosition.x * 0.5,
-          y: -mousePosition.y * 0.5 + (y1 as any).get()
-        }}
-        transition={isMobile ? undefined : { type: "spring", damping: 50, stiffness: 100 }}
         className="absolute inset-0 z-0"
       >
-        <img
-          src="/images/hero_ontario_terminal.png"
-          alt="Ontario Food Terminal"
-          className="w-full h-full object-cover brightness-[0.4] scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
+        <motion.div
+          animate={isMobile ? undefined : {
+            x: -mousePosition.x * 0.5,
+            y: -mousePosition.y * 0.5,
+          }}
+          transition={isMobile ? undefined : { type: "spring", damping: 50, stiffness: 100 }}
+          className="w-full h-full"
+        >
+          <img
+            src="/images/hero_ontario_terminal.png"
+            alt="Ontario Food Terminal"
+            className="w-full h-full object-cover brightness-[0.4] scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
+        </motion.div>
       </motion.div>
 
       {/* Floating Light Rays — desktop only */}
