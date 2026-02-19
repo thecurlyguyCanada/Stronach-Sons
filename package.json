@@ -12,6 +12,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@formio/js": "^5.3.1-refb-rc.0",
     "@formio/react": "^6.2.0",
     "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
