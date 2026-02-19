@@ -346,6 +346,9 @@ const HeritageTimeline = () => {
                 idx % 2 === 0 ? "md:justify-start" : "md:justify-end"
               )}
             >
+              <div className="relative w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center z-10 order-first md:order-2 mb-4 md:mb-0 flex-shrink-0">
+                <event.icon className="w-6 h-6 text-brand-ink" />
+              </div>
               <div className={cn(
                 "md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right md:pr-16",
                 idx % 2 === 0 ? "md:order-1" : "md:order-2 md:pl-16"
@@ -353,9 +356,6 @@ const HeritageTimeline = () => {
                 <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-2">{event.year}</div>
                 <h3 className="text-xl md:text-2xl font-serif mb-3 text-brand-cream">{event.title}</h3>
                 <p className="text-brand-cream/60 text-sm md:text-base leading-relaxed max-w-md">{event.description}</p>
-              </div>
-              <div className="absolute md:relative w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center z-10 md:order-2">
-                <event.icon className="w-6 h-6 text-brand-ink" />
               </div>
               <div className={cn(
                 "md:w-1/2 hidden md:block",
