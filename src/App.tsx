@@ -314,6 +314,105 @@ const LogisticsSection = () => {
   );
 };
 
+const PartnersSection = () => {
+  const brands = [
+    { name: 'Little Bear Produce', desc: 'Premium North American Greens' },
+    { name: 'Washington Fruit', desc: 'Industry Standard for Pomes' },
+    { name: 'Dole Fresh', desc: 'Global Excellence in Vegetables' },
+    { name: 'Collins Farms', desc: 'Heritage Ontario Root Crops' },
+    { name: 'Saliba Farms', desc: 'Quality Local Ontario Growers' },
+    { name: 'Washington Fruit', desc: 'Premium Apple & Pear Partners' }
+  ];
+
+  return (
+    <section id="partners" className="py-32 bg-white relative overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
+          <div className="max-w-3xl">
+            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Network</span>
+            <h2 className="text-6xl md:text-[8vw] font-serif leading-[0.85] tracking-tighter">
+              Strategic <br />
+              <span className="italic text-brand-olive">Alliances</span>
+            </h2>
+          </div>
+          <div className="max-w-sm">
+            <p className="text-brand-ink/60 text-sm leading-relaxed italic">
+              "We believe the best produce comes from strong partnerships. We proudly support local Ontario growers while maintaining long-standing relationships with top North American producers."
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {brands.map((brand, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group p-12 bg-brand-cream rounded-[2.5rem] border border-brand-ink/5 hover:bg-brand-green hover:border-brand-green transition-all duration-500 cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-8">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand-green group-hover:bg-brand-gold group-hover:text-brand-ink transition-colors">
+                  <ArrowUpRight className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-3xl font-serif mb-2 group-hover:text-white transition-colors">{brand.name}</h3>
+              <p className="text-brand-ink/40 text-xs group-hover:text-brand-cream/60 transition-colors uppercase tracking-widest font-black leading-none">{brand.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CommitmentSection = () => {
+  return (
+    <section className="py-32 bg-brand-ink text-brand-cream overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div>
+            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-8 block">Our Commitment</span>
+            <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-[1.1] tracking-tighter">
+              Uncompromising <br />
+              <span className="italic text-brand-cream/40">Quality Standards</span>
+            </h2>
+            <div className="space-y-12">
+              {[
+                { title: 'Source', desc: 'We source directly from local Ontario growers and top-tier North American producers to ensure the shortest path from field to fork.' },
+                { title: 'Inspect', desc: 'Every pallet is rigorously inspected at the Ontario Food Terminal for freshness, consistency, and adherence to our grading standards.' },
+                { title: 'Deliver', desc: 'Our cold-chain logistics ensure that delicate produce maintains peak quality throughout the entire distribution process.' }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-8 group">
+                  <div className="text-brand-gold font-serif italic text-4xl opacity-20 group-hover:opacity-100 transition-opacity">0{i + 1}</div>
+                  <div>
+                    <h4 className="text-xl font-serif mb-4 text-brand-cream">{item.title}</h4>
+                    <p className="text-brand-cream/60 text-sm leading-relaxed max-w-md">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="aspect-[4/3] rounded-[4rem] overflow-hidden">
+              <img
+                src="/images/about_wholesale_produce.png"
+                alt="Quality Inspection"
+                className="w-full h-full object-cover brightness-75 grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
+            <div className="absolute -bottom-12 -right-12 bg-brand-gold text-brand-ink p-12 rounded-[3rem] hidden xl:block shadow-2xl">
+              <div className="text-6xl font-serif mb-2 whitespace-nowrap">24 / 7</div>
+              <div className="text-[10px] uppercase font-black tracking-widest opacity-60">Terminal Presence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const HomePage = () => {
   return (
     <>
@@ -334,6 +433,8 @@ const HomePage = () => {
       </div>
       <AboutSectionSnapshot />
       <ProduceGrid />
+      <PartnersSection />
+      <CommitmentSection />
       <LogisticsSection />
 
       <section className="py-32 px-6 md:px-12">
