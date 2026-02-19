@@ -5,13 +5,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'motion/react';
-import { 
-  Leaf, 
-  Globe, 
-  Droplets, 
-  ArrowRight, 
-  Menu, 
-  X, 
+import {
+  Leaf,
+  Globe,
+  Droplets,
+  ArrowRight,
+  Menu,
+  X,
   ChevronRight,
   Instagram,
   Twitter,
@@ -51,8 +51,8 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-12">
           {['Our Legacy', 'Produce', 'Partners', 'Logistics'].map((item) => (
-            <a 
-              key={item} 
+            <a
+              key={item}
               href={`#${item.toLowerCase().replace(' ', '-')}`}
               className="text-[11px] font-bold uppercase tracking-[0.2em] hover:text-brand-gold transition-colors relative group"
             >
@@ -78,7 +78,7 @@ const Navbar = () => {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -93,11 +93,11 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col gap-8">
               {['Our Legacy', 'Produce', 'Partners', 'Logistics'].map((item, idx) => (
-                <motion.a 
+                <motion.a
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  key={item} 
+                  key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
                   className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
                   onClick={() => setIsMenuOpen(false)}
@@ -130,15 +130,14 @@ const Hero = () => {
 
   return (
     <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center">
-      <motion.div 
+      <motion.div
         style={{ y: y1, scale, opacity }}
         className="absolute inset-0 z-0"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1488459711635-0c6758971816?auto=format&fit=crop&q=80&w=2400"
+        <img
+          src="/images/hero_ontario_terminal.png"
           alt="Ontario Food Terminal"
           className="w-full h-full object-cover brightness-[0.6]"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
       </motion.div>
@@ -163,7 +162,7 @@ const Hero = () => {
               </h1>
             </motion.div>
           </div>
-          
+
           <div className="lg:col-span-4 lg:pb-12">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -172,7 +171,7 @@ const Hero = () => {
               className="glass-card p-8 rounded-3xl border-white/10"
             >
               <p className="text-brand-cream/80 text-lg font-light leading-relaxed mb-8 text-balance">
-                A trusted name at the Ontario Food Terminal for more than half a century. 
+                A trusted name at the Ontario Food Terminal for more than half a century.
                 Built on generations of hands-on experience and an uncompromising commitment to quality.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -236,17 +235,16 @@ const AboutSection = () => {
         </div>
 
         <div className="order-1 lg:order-2 relative">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="mask-oval aspect-[4/5] overflow-hidden bg-brand-ink"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1573246123716-6b1782bee499?auto=format&fit=crop&q=80&w=1200" 
+            <img
+              src="/images/about_wholesale_produce.png"
               alt="Fresh Wholesale Produce"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-              referrerPolicy="no-referrer"
             />
           </motion.div>
           <div className="absolute -bottom-8 -left-8 bg-brand-gold text-brand-ink p-8 rounded-2xl shadow-2xl max-w-[200px]">
@@ -264,28 +262,28 @@ const ProduceGrid = () => {
     {
       title: 'Heirloom Citrus',
       desc: 'Hand-picked varieties from the Mediterranean basin, selected for high essential oil content and balanced acidity.',
-      img: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&q=80&w=1200',
+      img: '/images/citrus_heirloom.png',
       tag: 'Seasonal',
       size: 'large'
     },
     {
       title: 'Organic Roots',
       desc: 'Nutrient-dense vegetables grown in volcanic soil.',
-      img: 'https://images.unsplash.com/photo-1590779033100-9f60705a2f3b?auto=format&fit=crop&q=80&w=800',
+      img: '/images/roots_organic.png',
       tag: 'Core',
       size: 'small'
     },
     {
       title: 'Exotic Berries',
       desc: 'Delicate fruits cultivated with precision climate control.',
-      img: 'https://images.unsplash.com/photo-1518635017498-87af5e433f13?auto=format&fit=crop&q=80&w=800',
+      img: '/images/berries_exotic.png',
       tag: 'Premium',
       size: 'small'
     },
     {
       title: 'Leafy Greens',
       desc: 'Hydroponically grown for maximum freshness and flavor.',
-      img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=1200',
+      img: '/images/greens_leafy.png',
       tag: 'Daily',
       size: 'large'
     }
@@ -316,7 +314,7 @@ const ProduceGrid = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {categories.map((cat, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -327,14 +325,14 @@ const ProduceGrid = () => {
               cat.size === 'large' ? "md:col-span-7 h-[600px]" : "md:col-span-5 h-[600px]"
             )}
           >
-            <img 
-              src={cat.img} 
+            <img
+              src={cat.img}
               alt={cat.title}
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
-            
+
             <div className="absolute top-10 right-10">
               <div className="bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full">
                 {cat.tag}
@@ -390,7 +388,7 @@ const BrandsSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {brands.map((brand, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -417,15 +415,14 @@ const LogisticsSection = () => {
   return (
     <section id="logistics" className="py-32 bg-brand-green text-brand-cream relative overflow-hidden">
       <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-20 pointer-events-none">
-        <img 
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" 
+        <img
+          src="/images/logistics_terminal.png"
           className="w-full h-full object-cover"
           alt="Logistics"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-green via-transparent to-transparent" />
       </div>
-      
+
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
           <div className="lg:col-span-5">
@@ -457,7 +454,7 @@ const LogisticsSection = () => {
                 { title: 'Deliver', desc: 'Reliable distribution for restaurants, retailers, and foodservice.' },
                 { title: 'Scale', desc: 'Intentional growth focused on long-term partner success.' }
               ].map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -525,9 +522,9 @@ const Footer = () => {
               <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-10">Inquiries</h5>
               <p className="text-sm text-brand-cream/40 mb-8 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
               <div className="relative">
-                <input 
-                  type="email" 
-                  placeholder="Email address" 
+                <input
+                  type="email"
+                  placeholder="Email address"
                   className="bg-transparent border-b border-white/20 w-full py-4 text-sm focus:outline-none focus:border-brand-gold transition-colors"
                 />
                 <button className="absolute right-0 top-1/2 -translate-y-1/2 text-brand-gold hover:text-white transition-colors">
@@ -558,7 +555,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        
+
         {/* Marquee Section */}
         <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
           <div className="flex whitespace-nowrap animate-marquee">
@@ -579,16 +576,15 @@ export default function App() {
         <ProduceGrid />
         <BrandsSection />
         <LogisticsSection />
-        
+
         {/* Call to Action Section */}
         <section className="py-32 px-6 md:px-12">
           <div className="max-w-[1800px] mx-auto bg-brand-green rounded-[4rem] p-12 md:p-32 text-center relative overflow-hidden group">
             <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-1000">
-              <img 
-                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=2400" 
+              <img
+                src="/images/cta_background.png"
                 className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]"
                 alt="Background Pattern"
-                referrerPolicy="no-referrer"
               />
             </div>
             <motion.div
@@ -618,8 +614,9 @@ export default function App() {
         </section>
       </main>
       <Footer />
-      
-      <style dangerouslySetInnerHTML={{ __html: `
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
