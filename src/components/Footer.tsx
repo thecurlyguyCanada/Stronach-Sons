@@ -15,7 +15,7 @@ export const Footer = () => {
                             <span className="font-serif text-3xl md:text-4xl font-bold tracking-tighter">Stronach & Sons</span>
                         </div>
                         <h3 className="text-2xl md:text-5xl font-serif italic mb-10 md:mb-12 leading-tight max-w-md">
-                            Generations of <br />
+                            Expertise and <br />
                             <span className="text-brand-gold">Excellence</span> in Produce.
                         </h3>
                         <div className="flex gap-4 md:gap-6">

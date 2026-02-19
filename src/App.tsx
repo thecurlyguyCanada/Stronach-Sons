@@ -91,11 +91,11 @@ const Hero = () => {
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-brand-gold" />
                 <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                  Est. 1968 • Wholesale Excellence
+                  Est. 2020 • Wholesale Excellence
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-[11vw] font-serif text-white leading-[0.85] tracking-tighter mb-12">
-                Heritage <br />
+                Quality <br />
                 <span className="italic font-normal text-brand-cream/90">& Horizon</span>
               </h1>
             </motion.div>
@@ -109,8 +109,8 @@ const Hero = () => {
               className="glass-card p-6 md:p-8 rounded-3xl border-white/10"
             >
               <p className="text-brand-cream/80 text-base md:text-lg font-light leading-relaxed mb-8 text-balance">
-                A trusted name at the Ontario Food Terminal for more than half a century.
-                Built on generations of hands-on experience and an uncompromising commitment to quality.
+                A trusted name at the Ontario Food Terminal.
+                Built on years of hands-on experience and an uncompromising commitment to quality.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white transition-all group flex items-center justify-center gap-2">
@@ -147,7 +147,7 @@ const AboutSectionSnapshot = () => {
           </h2>
           <div className="space-y-8 text-brand-ink/70 text-base md:text-lg font-light leading-relaxed max-w-xl">
             <p>
-              A trusted name at the Ontario Food Terminal for more than half a century, Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on generations of hands-on experience, strong relationships, and an uncompromising commitment to quality.
+              Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise, strong relationships, and an uncompromising commitment to quality.
             </p>
             <p>
               Quality is at the core of everything we do. As an established produce wholesaler in Ontario, we carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability.
@@ -155,8 +155,8 @@ const AboutSectionSnapshot = () => {
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 border-t border-brand-ink/10 pt-12">
             <div>
-              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">50+</div>
-              <div className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-brand-ink/40">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">2020</div>
+              <div className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-brand-ink/40">Established Year</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">100%</div>
@@ -184,7 +184,7 @@ const AboutSectionSnapshot = () => {
           </motion.div>
           <div className="absolute -bottom-4 -left-4 md:-bottom-8 md:-left-8 bg-brand-gold text-brand-ink p-6 md:p-8 rounded-2xl shadow-2xl max-w-[160px] md:max-w-[200px]">
             <div className="text-[10px] font-black uppercase tracking-widest mb-2">Ontario Food Terminal</div>
-            <p className="text-[9px] md:text-[10px] leading-relaxed font-bold">Proudly serving as a cornerstone of Ontario's food distribution network for decades.</p>
+            <p className="text-[9px] md:text-[10px] leading-relaxed font-bold">Proudly serving as a cornerstone of Ontario's food distribution network.</p>
           </div>
         </div>
       </div>
@@ -194,11 +194,10 @@ const AboutSectionSnapshot = () => {
 
 const HeritageTimeline = () => {
   const timelineEvents = [
-    { year: '1968', title: 'Founding Vision', description: 'Stronach & Sons established, laying the groundwork for a legacy in produce distribution.', icon: History },
-    { year: '1980s', title: 'Expansion & Growth', description: 'Expanded operations and built strong relationships with local Ontario growers.', icon: TrendingUp },
-    { year: '2000s', title: 'Modernization', description: 'Integrated advanced logistics and quality control systems to meet evolving market demands.', icon: Activity },
-    { year: '2020', title: 'New Generation', description: 'The next generation takes the helm, reaffirming commitment to quality and innovation.', icon: CheckCircle2 },
-    { year: 'Today', title: 'Future Forward', description: 'Continuing to lead as a trusted wholesale partner, rooted in tradition, driven by progress.', icon: Globe },
+    { year: '2020', title: 'The Launch', description: 'Stronach & Sons 2020 established at the Ontario Food Terminal with a focus on premium quality.', icon: History },
+    { year: '2022', title: 'Network Expansion', description: 'Rapidly expanded operations and built strong relationships with top-tier North American producers.', icon: TrendingUp },
+    { year: '2024', title: 'Modern Logistics', description: 'Implemented advanced tracking systems to ensure peak freshness and cold-chain integrity.', icon: Activity },
+    { year: 'Today', title: 'Trusted Partner', description: 'Leading as a trusted wholesale partner, driven by progress and uncompromising quality standards.', icon: Globe },
   ];
 
   return (
@@ -252,7 +251,7 @@ const HeritageTimeline = () => {
 const MarketplaceTicker = () => {
   const items = [
     { text: 'Ontario Food Terminal', icon: Leaf },
-    { text: 'Generations of Quality', icon: Award },
+    { text: 'Expertly Sourced Quality', icon: Award },
     { text: 'Trusted Wholesale Partner', icon: ShieldCheck },
     { text: 'Freshness Guaranteed', icon: CheckCircle2 },
     { text: 'Year-Round Availability', icon: Calendar },
@@ -626,11 +625,11 @@ const HomePage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-5xl md:text-[9vw] font-serif text-white mb-12 leading-[0.85] tracking-tighter">
-              Tradition <br />
+              Quality <br />
               <span className="italic text-brand-gold">Redefined.</span>
             </h2>
             <p className="text-brand-cream/60 text-lg md:text-2xl font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Elevate your inventory with the finest produce at the Ontario Food Terminal. Built on decades of trust, driven by modern vision.
+              Elevate your inventory with the finest produce at the Ontario Food Terminal. Built on trust, driven by modern vision.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button className="w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl">

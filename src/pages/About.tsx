@@ -18,13 +18,12 @@ const AboutPage = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 md:mb-8 block">Our Legacy</span>
+                            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 md:mb-8 block">Our Foundation</span>
                             <h1 className="text-5xl md:text-8xl font-serif mb-8 md:mb-12 leading-[0.9] tracking-tighter">
-                                Rooted in <span className="italic text-brand-olive">Tradition</span>, <br />
-                                Driven by <span className="italic text-brand-olive">Progress</span>.
+                                Quality & <span className="italic text-brand-olive">Horizon</span>.
                             </h1>
                             <p className="text-brand-ink/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                                A trusted name at the Ontario Food Terminal for more than half a century, Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario.
+                                Established at the Ontario Food Terminal in 2020, Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise and a commitment to excellence.
                             </p>
                         </motion.div>
 
@@ -42,9 +41,9 @@ const AboutPage = () => {
                                 />
                             </div>
                             <div className="absolute -bottom-6 -left-6 md:-bottom-12 md:-left-12 bg-white p-8 md:p-12 rounded-[1.5rem] md:rounded-[2rem] shadow-xl border border-brand-ink/5 max-w-[200px] md:max-w-[280px]">
-                                <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-3 md:mb-4">50+</div>
+                                <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-3 md:mb-4">2020</div>
                                 <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-black text-brand-ink/40 leading-relaxed">
-                                    Years of combined hands-on experience at the heart of Ontario's food distribution.
+                                    Established year at the heart of Ontario's food distribution.
                                 </p>
                             </div>
                         </motion.div>
