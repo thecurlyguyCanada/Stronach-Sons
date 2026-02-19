@@ -33,8 +33,8 @@ export const Footer = () => {
                                 <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Company</h5>
                                 <ul className="space-y-4 md:space-y-6 text-[13px] md:text-sm font-medium text-brand-cream/40">
                                     <li><Link to="/about" className="hover:text-white transition-colors">Our Legacy</Link></li>
+                                    <li><Link to="/documentation" className="hover:text-white transition-colors">Documentation</Link></li>
                                     <li><Link to="/#partners" className="hover:text-white transition-colors">Partnerships</Link></li>
-                                    <li><a href="#" className="hover:text-white transition-colors">Wholesale</a></li>
                                     <li><a href="mailto:stronson@stronachandosons.ca" className="hover:text-white transition-colors">Contact</a></li>
                                 </ul>
                             </div>

@@ -25,6 +25,7 @@ import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import AboutPage from './pages/About';
+import DocumentationPage from './pages/Documentation';
 import LeadForm from './components/LeadForm';
 
 const CustomCursor = () => {
@@ -715,6 +716,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/documentation" element={<DocumentationPage />} />
         </Routes>
       </main>
       <Footer />
