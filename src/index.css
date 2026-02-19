@@ -18,7 +18,10 @@
     @apply bg-brand-cream text-brand-ink font-sans antialiased selection:bg-brand-green selection:text-brand-cream;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-serif tracking-tight;
   }
 }
@@ -42,17 +45,49 @@
   }
 
   @keyframes noise {
-    0% { transform: translate(0,0) }
-    10% { transform: translate(-5%,-5%) }
-    20% { transform: translate(-10%,5%) }
-    30% { transform: translate(5%,-10%) }
-    40% { transform: translate(-5%,15%) }
-    50% { transform: translate(-10%,5%) }
-    60% { transform: translate(15%,0) }
-    70% { transform: translate(0,10%) }
-    80% { transform: translate(-15%,0) }
-    90% { transform: translate(10%,5%) }
-    100% { transform: translate(5%,0) }
+    0% {
+      transform: translate(0, 0)
+    }
+
+    10% {
+      transform: translate(-5%, -5%)
+    }
+
+    20% {
+      transform: translate(-10%, 5%)
+    }
+
+    30% {
+      transform: translate(5%, -10%)
+    }
+
+    40% {
+      transform: translate(-5%, 15%)
+    }
+
+    50% {
+      transform: translate(-10%, 5%)
+    }
+
+    60% {
+      transform: translate(15%, 0)
+    }
+
+    70% {
+      transform: translate(0, 10%)
+    }
+
+    80% {
+      transform: translate(-15%, 0)
+    }
+
+    90% {
+      transform: translate(10%, 5%)
+    }
+
+    100% {
+      transform: translate(5%, 0)
+    }
   }
 
   .text-balance {
@@ -77,8 +112,13 @@
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .custom-cursor {
@@ -96,5 +136,67 @@
   .perspective-1000 {
     perspective: 1000px;
   }
-}
 
+  /* Form.io Premium Styling */
+  .formio-container {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .formio-container .form-control {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(26, 60, 52, 0.1) !important;
+    border-radius: 0 !important;
+    padding: 1rem 0 !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .formio-container .form-control:focus {
+    border-bottom-color: #C5A059 !important;
+    box-shadow: none !important;
+  }
+
+  .formio-container .control-label {
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2rem !important;
+    font-weight: 800 !important;
+    color: rgba(26, 60, 52, 0.4) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .formio-container .btn-primary {
+    background-color: #1A3C34 !important;
+    border: none !important;
+    border-radius: 9999px !important;
+    padding: 1.25rem 2.5rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1rem !important;
+    font-size: 0.75rem !important;
+    margin-top: 2rem !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .formio-container .btn-primary:hover {
+    background-color: #C5A059 !important;
+    color: #1A3C34 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 20px 40px -10px rgba(197, 160, 89, 0.3) !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(26, 60, 52, 0.05);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #C5A059;
+    border-radius: 10px;
+  }
+}

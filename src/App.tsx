@@ -25,6 +25,7 @@ import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import AboutPage from './pages/About';
+import LeadForm from './components/LeadForm';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -113,9 +114,11 @@ const Hero = () => {
                 Built on years of hands-on experience and an uncompromising commitment to quality.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white transition-all group flex items-center justify-center gap-2">
-                  Wholesale Catalog
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
+                  className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white transition-all group flex items-center justify-center gap-2"
+                >
+                  Wholesale Inquiry <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
@@ -664,7 +667,10 @@ const HomePage = () => {
               Elevate your inventory with the finest produce at the Ontario Food Terminal. Built on trust, driven by modern vision.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl">
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
+                className="w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
+              >
                 Wholesale Inquiry
               </button>
               <button className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-ink hover:text-brand-cream transition-all">
@@ -692,6 +698,14 @@ export default function App() {
     }
   }, [pathname, hash]);
 
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsLeadFormOpen(true);
+    window.addEventListener('open-lead-form', handleOpen);
+    return () => window.removeEventListener('open-lead-form', handleOpen);
+  }, []);
+
   return (
     <div className="min-h-screen relative selection:bg-brand-green selection:text-brand-cream">
       <div className="grain" />
@@ -704,6 +718,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      {isLeadFormOpen && <LeadForm onClose={() => setIsLeadFormOpen(false)} />}
     </div>
   );
 }
