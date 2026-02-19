@@ -113,9 +113,12 @@ const AboutPage = () => {
                             <button className="w-full sm:w-auto bg-brand-ink text-brand-cream px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-green transition-all shadow-xl">
                                 Become a Partner
                             </button>
-                            <button className="w-full sm:w-auto border border-brand-ink/20 text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-ink hover:text-brand-cream transition-all">
+                            <a
+                                href="mailto:stronson@stronachandosons.ca"
+                                className="w-full sm:w-auto border border-brand-ink/20 text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-ink hover:text-brand-cream transition-all flex items-center justify-center"
+                            >
                                 Contact Sales
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </section>

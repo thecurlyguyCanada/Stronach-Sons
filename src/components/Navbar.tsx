@@ -57,12 +57,15 @@ export const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center gap-6">
-                    <button className={cn(
-                        "text-xs font-bold uppercase tracking-widest transition-colors",
-                        isScrolled || !isHome ? "text-brand-ink" : "text-white"
-                    )}>
+                    <a
+                        href="mailto:stronson@stronachandosons.ca"
+                        className={cn(
+                            "text-xs font-bold uppercase tracking-widest transition-colors",
+                            isScrolled || !isHome ? "text-brand-ink" : "text-white"
+                        )}
+                    >
                         Contact
-                    </button>
+                    </a>
                     <button className="bg-brand-ink text-brand-cream px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-ink/10">
                         Wholesale Inquiry
                     </button>

@@ -35,7 +35,7 @@ export const Footer = () => {
                                     <li><Link to="/about" className="hover:text-white transition-colors">Our Legacy</Link></li>
                                     <li><Link to="/#partners" className="hover:text-white transition-colors">Partnerships</Link></li>
                                     <li><a href="#" className="hover:text-white transition-colors">Wholesale</a></li>
-                                    <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                                    <li><a href="mailto:stronson@stronachandosons.ca" className="hover:text-white transition-colors">Contact</a></li>
                                 </ul>
                             </div>
                             <div>

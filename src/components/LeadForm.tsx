@@ -39,9 +39,12 @@ const LeadForm: React.FC<LeadFormProps> = ({
 
                 <div className="mb-12">
                     <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-4 block">Get Started</span>
-                    <h2 className="text-4xl md:text-5xl font-serif text-brand-ink leading-tight tracking-tighter">
+                    <h2 className="text-4xl md:text-5xl font-serif text-brand-ink leading-tight tracking-tighter mb-4">
                         {title}
                     </h2>
+                    <p className="text-brand-ink/60 text-sm italic">
+                        Or reach us directly at <a href="mailto:stronson@stronachandosons.ca" className="text-brand-gold hover:underline font-bold">stronson@stronachandosons.ca</a>
+                    </p>
                 </div>
 
                 <div className="formio-container overflow-y-auto max-h-[60vh] pr-4 custom-scrollbar">
