@@ -66,9 +66,9 @@ export const Navbar = () => {
                     >
                         Contact
                     </a>
-                    <button className="bg-brand-ink text-brand-cream px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-ink/10">
+                    <a href="mailto:stronson@stronachandosons.ca" className="bg-brand-ink text-brand-cream px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-ink/10 inline-block text-center cursor-pointer">
                         Wholesale Inquiry
-                    </button>
+                    </a>
                 </div>
 
                 <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>

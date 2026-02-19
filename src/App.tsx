@@ -26,7 +26,6 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import AboutPage from './pages/About';
 import DocumentationPage from './pages/Documentation';
-import LeadForm from './components/LeadForm';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -184,13 +183,13 @@ const Hero = () => {
                 "A trusted name at the Ontario Food Terminal. Built on professional expertise and an uncompromising commitment to quality."
               </p>
               <div className="relative z-10 flex flex-wrap gap-4">
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
+                <a
+                  href="mailto:stronson@stronachandosons.ca"
                   className="w-full sm:w-auto bg-brand-gold text-brand-ink px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white transition-all transform hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(197,160,89,0.5)] group flex items-center justify-center gap-3"
                 >
                   Wholesale Inquiry
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -915,12 +914,12 @@ const HomePage = () => {
               Elevate your inventory with the finest produce at the Ontario Food Terminal. Built on trust, driven by modern vision.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
-                className="w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
+              <a
+                href="mailto:stronson@stronachandosons.ca"
+                className="inline-block text-center w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
               >
                 Wholesale Inquiry
-              </button>
+              </a>
               <button className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-ink hover:text-brand-cream transition-all">
                 Our Collection
               </button>
@@ -946,14 +945,6 @@ export default function App() {
     }
   }, [pathname, hash]);
 
-  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
-
-  useEffect(() => {
-    const handleOpen = () => setIsLeadFormOpen(true);
-    window.addEventListener('open-lead-form', handleOpen);
-    return () => window.removeEventListener('open-lead-form', handleOpen);
-  }, []);
-
   return (
     <div className="min-h-screen relative selection:bg-brand-green selection:text-brand-cream">
       <div className="grain" />
@@ -967,7 +958,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      {isLeadFormOpen && <LeadForm onClose={() => setIsLeadFormOpen(false)} />}
     </div>
   );
 }

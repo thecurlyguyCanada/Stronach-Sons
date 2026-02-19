@@ -51,15 +51,15 @@ export const Footer = () => {
                         <div className="col-span-1 lg:col-span-1">
                             <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Inquiries</h5>
                             <p className="text-[13px] md:text-sm text-brand-cream/40 mb-8 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
-                            <button
-                                onClick={() => window.dispatchEvent(new CustomEvent('open-lead-form'))}
-                                className="group flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-white hover:text-brand-gold transition-colors"
+                            <a
+                                href="mailto:stronson@stronachandosons.ca"
+                                className="inline-flex group items-center gap-4 text-sm font-bold uppercase tracking-widest text-white hover:text-brand-gold transition-colors"
                             >
                                 Send Message
                                 <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-gold transition-colors">
                                     <ArrowRight className="w-4 h-4" />
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
