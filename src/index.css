@@ -66,5 +66,35 @@
   .mask-oval {
     clip-path: ellipse(45% 50% at 50% 50%);
   }
+
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: var(--color-brand-gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.15s ease-out;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
 

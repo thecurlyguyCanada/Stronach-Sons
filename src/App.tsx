@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import {
@@ -12,11 +12,41 @@ import {
   ArrowUpRight,
   MapPin,
   Clock,
+  Award,
+  ShieldCheck,
+  History,
+  TrendingUp,
+  Activity,
+  CheckCircle2,
+  Calendar,
+  Globe
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import AboutPage from './pages/About';
+
+const CustomCursor = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updatePosition = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', updatePosition);
+    return () => window.removeEventListener('mousemove', updatePosition);
+  }, []);
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-gold/30 pointer-events-none z-[9999] hidden lg:block"
+      animate={{ x: position.x - 16, y: position.y - 16 }}
+      transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.5 }}
+    >
+      <div className="w-1 h-1 bg-brand-gold rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+    </motion.div>
+  );
+};
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -33,10 +63,22 @@ const Hero = () => {
         <img
           src="/images/hero_ontario_terminal.png"
           alt="Ontario Food Terminal"
-          className="w-full h-full object-cover brightness-[0.6]"
+          className="w-full h-full object-cover brightness-[0.5]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/40 via-transparent to-brand-cream" />
       </motion.div>
+
+      {/* Decorative Floating Text */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
+        <motion.h2
+          initial={{ opacity: 0, scale: 1.2 }}
+          animate={{ opacity: 0.1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="text-[40vw] font-serif text-white text-outline leading-none font-black italic select-none"
+        >
+          2020
+        </motion.h2>
+      </div>
 
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 py-32 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-end">
@@ -49,12 +91,12 @@ const Hero = () => {
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-brand-gold" />
                 <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                  Ontario Food Terminal Legacy
+                  Est. 1968 • Wholesale Excellence
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-[11vw] font-serif text-white leading-[0.85] tracking-tighter mb-12">
-                Rooted in <br />
-                <span className="italic font-normal text-brand-cream/90">Tradition</span>
+                Heritage <br />
+                <span className="italic font-normal text-brand-cream/90">& Horizon</span>
               </h1>
             </motion.div>
           </div>
@@ -147,6 +189,90 @@ const AboutSectionSnapshot = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const HeritageTimeline = () => {
+  const timelineEvents = [
+    { year: '1968', title: 'Founding Vision', description: 'Stronach & Sons established, laying the groundwork for a legacy in produce distribution.', icon: History },
+    { year: '1980s', title: 'Expansion & Growth', description: 'Expanded operations and built strong relationships with local Ontario growers.', icon: TrendingUp },
+    { year: '2000s', title: 'Modernization', description: 'Integrated advanced logistics and quality control systems to meet evolving market demands.', icon: Activity },
+    { year: '2020', title: 'New Generation', description: 'The next generation takes the helm, reaffirming commitment to quality and innovation.', icon: CheckCircle2 },
+    { year: 'Today', title: 'Future Forward', description: 'Continuing to lead as a trusted wholesale partner, rooted in tradition, driven by progress.', icon: Globe },
+  ];
+
+  return (
+    <section id="heritage-timeline" className="py-20 md:py-32 bg-brand-ink text-brand-cream relative overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="text-center mb-16 md:mb-24">
+          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Journey</span>
+          <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] tracking-tighter">
+            A Legacy of <br />
+            <span className="italic text-brand-cream/60">Excellence</span>
+          </h2>
+        </div>
+
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-brand-gold/20 hidden md:block" />
+          {timelineEvents.map((event, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              className={cn(
+                "flex flex-col md:flex-row items-center md:items-start py-8 md:py-12 relative",
+                idx % 2 === 0 ? "md:justify-start" : "md:justify-end"
+              )}
+            >
+              <div className={cn(
+                "md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right md:pr-16",
+                idx % 2 === 0 ? "md:order-1" : "md:order-2 md:pl-16"
+              )}>
+                <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-2">{event.year}</div>
+                <h3 className="text-xl md:text-2xl font-serif mb-3 text-brand-cream">{event.title}</h3>
+                <p className="text-brand-cream/60 text-sm md:text-base leading-relaxed max-w-md">{event.description}</p>
+              </div>
+              <div className="absolute md:relative w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center z-10 md:order-2">
+                <event.icon className="w-6 h-6 text-brand-ink" />
+              </div>
+              <div className={cn(
+                "md:w-1/2 hidden md:block",
+                idx % 2 === 0 ? "md:order-2" : "md:order-1"
+              )} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MarketplaceTicker = () => {
+  const items = [
+    { text: 'Ontario Food Terminal', icon: Leaf },
+    { text: 'Generations of Quality', icon: Award },
+    { text: 'Trusted Wholesale Partner', icon: ShieldCheck },
+    { text: 'Freshness Guaranteed', icon: CheckCircle2 },
+    { text: 'Year-Round Availability', icon: Calendar },
+  ];
+
+  return (
+    <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
+      <div className="flex whitespace-nowrap animate-marquee">
+        {[...Array(3)].map((_, i) => ( // Repeat items to ensure continuous scroll
+          <React.Fragment key={i}>
+            {items.map((item, idx) => (
+              <div key={`${i}-${idx}`} className="flex items-center gap-12 px-6">
+                <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">{item.text}</span>
+                <item.icon className="w-4 h-4 text-brand-ink" />
+              </div>
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -246,6 +372,64 @@ const ProduceGrid = () => {
             </div>
           </motion.div>
         ))}
+      </div>
+    </section>
+  );
+};
+
+const QualityLab = () => {
+  const features = [
+    {
+      icon: ShieldCheck,
+      title: 'Rigorous Inspection',
+      description: 'Every shipment undergoes a multi-point inspection process at the terminal to ensure peak freshness and quality.',
+    },
+    {
+      icon: Award,
+      title: 'Grading Standards',
+      description: 'We adhere to and often exceed industry grading standards, ensuring consistent quality for our partners.',
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Cold Chain Integrity',
+      description: 'Our logistics maintain optimal temperatures from farm to your door, preserving produce integrity.',
+    },
+    {
+      icon: History,
+      title: 'Traceability',
+      description: 'Full traceability from source to destination, providing transparency and accountability.',
+    },
+  ];
+
+  return (
+    <section id="quality-lab" className="py-20 md:py-32 bg-brand-cream relative overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="text-center mb-16 md:mb-24">
+          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Promise</span>
+          <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] tracking-tighter">
+            The Quality <br />
+            <span className="italic text-brand-olive">Advantage</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              className="bg-white p-8 md:p-10 rounded-[2rem] border border-brand-ink/5 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <div className="w-16 h-16 rounded-full bg-brand-gold flex items-center justify-center mb-6">
+                <feature.icon className="w-8 h-8 text-brand-ink" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-serif mb-3 text-brand-ink">{feature.title}</h3>
+              <p className="text-brand-ink/70 text-sm md:text-base leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -415,74 +599,51 @@ const CommitmentSection = () => {
 
 const HomePage = () => {
   return (
-    <>
+    <div className="relative overflow-hidden">
       <Hero />
-      <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="flex items-center gap-12 px-6">
-              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Ontario Food Terminal</span>
-              <Leaf className="w-4 h-4 text-brand-ink" />
-              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Generations of Quality</span>
-              <Leaf className="w-4 h-4 text-brand-ink" />
-              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Trusted Wholesale Partner</span>
-              <Leaf className="w-4 h-4 text-brand-ink" />
-            </div>
-          ))}
-        </div>
-      </div>
+      <MarketplaceTicker />
       <AboutSectionSnapshot />
+      <HeritageTimeline />
       <ProduceGrid />
+      <QualityLab />
+      <LogisticsSection />
       <PartnersSection />
       <CommitmentSection />
-      <LogisticsSection />
 
-      <section className="py-32 px-6 md:px-12">
-        <div className="max-w-[1800px] mx-auto bg-brand-green rounded-[4rem] p-12 md:p-32 text-center relative overflow-hidden group">
-          <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-1000">
-            <img
-              src="/images/cta_background.png"
-              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]"
-              alt="Background Pattern"
-            />
-          </div>
+      {/* Final Premium CTA Section */}
+      <section className="py-24 md:py-48 px-6 md:px-12 bg-brand-green relative overflow-hidden group">
+        <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-1000">
+          <img
+            src="/images/cta_background_final.png"
+            className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[5s]"
+            alt="Estate Background"
+          />
+        </div>
+        <div className="max-w-[1200px] mx-auto text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative z-10"
           >
-            <span className="text-brand-gold uppercase tracking-[0.5em] text-[10px] font-black mb-8 block">Wholesale Inquiry</span>
-            <h2 className="text-5xl md:text-[7vw] font-serif text-white mb-12 leading-[0.85] tracking-tighter">
-              Grow Your <br />
-              <span className="italic text-brand-cream/60">Success With Us</span>
+            <h2 className="text-5xl md:text-[9vw] font-serif text-white mb-12 leading-[0.85] tracking-tighter">
+              Tradition <br />
+              <span className="italic text-brand-gold">Redefined.</span>
             </h2>
-            <p className="text-brand-cream/60 text-xl max-w-2xl mx-auto mb-16 font-light leading-relaxed">
-              We are expanding our customer and vendor portfolio with partners who share our dedication to quality and accountability.
+            <p className="text-brand-cream/60 text-lg md:text-2xl font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+              Elevate your inventory with the finest produce at the Ontario Food Terminal. Built on decades of trust, driven by modern vision.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all transform hover:-translate-y-1 shadow-2xl">
-                Become a Partner
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button className="w-full sm:w-auto bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl">
+                Wholesale Inquiry
               </button>
-              <button className="text-white border border-white/20 px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all">
-                Contact Sales
+              <button className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-brand-ink hover:text-brand-cream transition-all">
+                Our Collection
               </button>
             </div>
           </motion.div>
         </div>
       </section>
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-      `}} />
-    </>
+    </div>
   );
 };
 
@@ -501,8 +662,9 @@ export default function App() {
   }, [pathname, hash]);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative selection:bg-brand-green selection:text-brand-cream">
       <div className="grain" />
+      <CustomCursor />
       <Navbar />
       <main>
         <Routes>
