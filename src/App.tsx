@@ -29,18 +29,29 @@ import DocumentationPage from './pages/Documentation';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', updatePosition);
     return () => window.removeEventListener('mousemove', updatePosition);
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-gold/30 pointer-events-none z-[9999] hidden lg:block"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-gold/30 pointer-events-none z-[9999]"
       animate={{ x: position.x - 16, y: position.y - 16 }}
       transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.5 }}
     >
@@ -62,20 +73,21 @@ const Hero = () => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
     window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
+  // Only attach mousemove listener on desktop
+  useEffect(() => {
+    if (isMobile) return;
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 1024) return;
       setMousePosition({
         x: (e.clientX / window.innerWidth - 0.5) * 20,
         y: (e.clientY / window.innerHeight - 0.5) * 20,
       });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isMobile]);
 
   const titleWords = "Quality & Horizon".split(" ");
 
@@ -83,12 +95,12 @@ const Hero = () => {
     <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-brand-ink">
       {/* Background Parallax Layer */}
       <motion.div
-        style={{ y: y1, scale, opacity }}
-        animate={{
+        style={isMobile ? { opacity } : { y: y1, scale, opacity }}
+        animate={isMobile ? undefined : {
           x: -mousePosition.x * 0.5,
           y: -mousePosition.y * 0.5 + (y1 as any).get()
         }}
-        transition={{ type: "spring", damping: 50, stiffness: 100 }}
+        transition={isMobile ? undefined : { type: "spring", damping: 50, stiffness: 100 }}
         className="absolute inset-0 z-0"
       >
         <img
@@ -99,23 +111,25 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
       </motion.div>
 
-      {/* Floating Light Rays */}
-      <div className="absolute inset-0 pointer-events-none z-[1]">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/4 -left-1/4 w-[100vw] h-[100vw] bg-brand-gold/10 rounded-full blur-[150px]"
-        />
-      </div>
+      {/* Floating Light Rays — desktop only */}
+      {!isMobile && (
+        <div className="absolute inset-0 pointer-events-none z-[1]">
+          <motion.div
+            animate={{
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              opacity: [0.1, 0.2, 0.1]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/4 -left-1/4 w-[100vw] h-[100vw] bg-brand-gold/10 rounded-full blur-[150px]"
+          />
+        </div>
+      )}
 
       {/* Decorative Floating Text */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
         <motion.h2
-          style={{ x: mousePosition.x * 2, y: mousePosition.y * 2 }}
+          style={isMobile ? undefined : { x: mousePosition.x * 2, y: mousePosition.y * 2 }}
           initial={{ opacity: 0, scale: 1.2 }}
           animate={{ opacity: 0.15, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -275,6 +289,7 @@ const AboutSectionSnapshot = () => {
             <img
               src="/images/about_wholesale_produce.png"
               alt="Fresh Wholesale Produce"
+              loading="lazy"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
             />
           </motion.div>
@@ -482,9 +497,17 @@ const ProduceGrid = () => {
   const TiltCard = ({ cat, idx }: { cat: any, idx: number }) => {
     const [rotateX, setRotateX] = useState(0);
     const [rotateY, setRotateY] = useState(0);
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+      const check = () => setIsDesktop(window.innerWidth >= 1024);
+      check();
+      window.addEventListener('resize', check);
+      return () => window.removeEventListener('resize', check);
+    }, []);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-      if (window.innerWidth < 1024) return;
+      if (!isDesktop) return;
       const rect = e.currentTarget.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -507,9 +530,9 @@ const ProduceGrid = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: idx * 0.1, duration: 0.8 }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        animate={{ rotateX, rotateY }}
+        onMouseMove={isDesktop ? handleMouseMove : undefined}
+        onMouseLeave={isDesktop ? handleMouseLeave : undefined}
+        animate={isDesktop ? { rotateX, rotateY } : undefined}
         className={cn(
           "group relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] cursor-pointer perspective-1000",
           cat.size === 'large' ? "md:col-span-7 h-[400px] md:h-[600px]" : "md:col-span-5 h-[400px] md:h-[600px]"
@@ -517,12 +540,13 @@ const ProduceGrid = () => {
       >
         <motion.div
           className="w-full h-full"
-          whileHover={{ scale: 1.05 }}
+          whileHover={isDesktop ? { scale: 1.05 } : undefined}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <img
             src={cat.img}
             alt={cat.title}
+            loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
           />
         </motion.div>
@@ -530,7 +554,7 @@ const ProduceGrid = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
 
         <div className="absolute top-10 right-10">
-          <div className="bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full">
+          <div className="bg-white/10 lg:backdrop-blur-xl border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full">
             {cat.tag}
           </div>
         </div>
@@ -650,6 +674,7 @@ const LogisticsSection = () => {
           src="/images/logistics_terminal.png"
           className="w-full h-full object-cover"
           alt="Logistics"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-green via-transparent to-transparent" />
       </div>
@@ -691,7 +716,7 @@ const LogisticsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-[2rem] hover:bg-white/10 transition-all"
+                  className="bg-white/5 lg:backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-[2rem] hover:bg-white/10 transition-all"
                 >
                   <h4 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-brand-gold">{item.title}</h4>
                   <p className="text-brand-cream/50 text-xs md:text-sm leading-relaxed">{item.desc}</p>
@@ -780,7 +805,7 @@ const PartnersSection = () => {
                 </div>
 
                 {/* Glassmorphism Hover Overlay */}
-                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-white/40 lg:backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
               </div>
             </motion.div>
           ))}
@@ -822,6 +847,7 @@ const CommitmentSection = () => {
               <img
                 src="/images/about_wholesale_produce.png"
                 alt="Quality Inspection"
+                loading="lazy"
                 className="w-full h-full object-cover brightness-75 grayscale hover:grayscale-0 transition-all duration-1000"
               />
             </div>
@@ -895,9 +921,10 @@ const HomePage = () => {
       <section className="py-24 md:py-48 px-6 md:px-12 bg-brand-green relative overflow-hidden group">
         <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-1000">
           <img
-            src="/images/cta_background_final.png"
+            src="/images/cta_background.png"
             className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[5s]"
             alt="Estate Background"
+            loading="lazy"
           />
         </div>
         <div className="max-w-[1200px] mx-auto text-center relative z-10">

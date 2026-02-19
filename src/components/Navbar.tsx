@@ -27,7 +27,7 @@ export const Navbar = () => {
     return (
         <nav className={cn(
             "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-6",
-            isScrolled || !isHome ? "bg-brand-cream/90 backdrop-blur-xl py-4 border-b border-brand-ink/5" : "bg-transparent"
+            isScrolled || !isHome ? "bg-brand-cream/95 backdrop-blur-md lg:backdrop-blur-xl py-4 border-b border-brand-ink/5" : "bg-transparent"
         )}>
             <div className="max-w-[1800px] mx-auto flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-3 group cursor-pointer">
