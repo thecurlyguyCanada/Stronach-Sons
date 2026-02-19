@@ -499,49 +499,81 @@ const LogisticsSection = () => {
 
 const PartnersSection = () => {
   const brands = [
-    { name: 'Little Bear Produce', desc: 'Premium North American Greens' },
-    { name: 'Washington Fruit', desc: 'Industry Standard for Pomes' },
-    { name: 'Dole Fresh', desc: 'Global Excellence in Vegetables' },
-    { name: 'Collins Farms', desc: 'Heritage Ontario Root Crops' },
-    { name: 'Saliba Farms', desc: 'Quality Local Ontario Growers' },
-    { name: 'Washington Fruit', desc: 'Premium Apple & Pear Partners' }
+    { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34' },
+    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059' },
+    { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414' },
+    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40' },
+    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34' },
+    { name: 'Sunkist', suffix: 'Growers', region: 'Global', desc: 'Excellence in Citrus Distribution', color: '#C5A059' }
   ];
 
   return (
-    <section id="partners" className="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-12">
-          <div className="max-w-3xl">
-            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Network</span>
-            <h2 className="text-5xl md:text-[8vw] font-serif leading-[0.85] tracking-tighter">
+    <section id="partners" className="py-24 md:py-48 bg-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-cream/30 -skew-x-12 translate-x-1/4 pointer-events-none" />
+
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-24 md:mb-40 gap-16">
+          <div className="max-w-4xl">
+            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-8 block">Project Partners</span>
+            <h2 className="text-6xl md:text-[10vw] font-serif leading-[0.8] tracking-tighter">
               Strategic <br />
               <span className="italic text-brand-olive">Alliances</span>
             </h2>
           </div>
-          <div className="max-w-sm">
-            <p className="text-brand-ink/60 text-[13px] md:text-sm leading-relaxed italic">
-              "We believe the best produce comes from strong partnerships. We proudly support local Ontario growers while maintaining long-standing relationships with top North American producers."
+          <div className="max-w-xs lg:pb-8">
+            <p className="text-brand-ink/50 text-sm md:text-base leading-relaxed italic">
+              "Excellence is never an accident; it is the result of high intention and sincere effort in our partnerships."
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {brands.map((brand, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group p-8 md:p-12 bg-brand-cream rounded-[2rem] md:rounded-[2.5rem] border border-brand-ink/5 hover:bg-brand-green hover:border-brand-green transition-all duration-500 cursor-pointer"
+              transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative"
             >
-              <div className="flex justify-between items-start mb-6 md:mb-8">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center text-brand-green group-hover:bg-brand-gold group-hover:text-brand-ink transition-colors">
-                  <ArrowUpRight className="w-5 h-5" />
+              <div className="relative p-12 md:p-16 h-full bg-brand-cream/50 rounded-[3rem] border border-brand-ink/5 overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(26,60,52,0.15)] hover:-translate-y-4">
+                {/* Background Pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors duration-700" />
+
+                <div className="relative z-10 flex flex-col h-full justify-between gap-16">
+                  <div className="flex justify-between items-start">
+                    <div className="px-4 py-1.5 bg-white rounded-full border border-brand-ink/5 text-[9px] font-black uppercase tracking-widest text-brand-gold">
+                      {brand.region}
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-brand-ink/5 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-500">
+                      <ArrowUpRight className="w-5 h-5 group-hover:text-white transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    {/* Stylized Typographic Logo */}
+                    <div className="flex flex-col">
+                      <span className="text-4xl md:text-5xl font-serif text-brand-green leading-none tracking-tighter group-hover:italic transition-all duration-500">
+                        {brand.name}
+                      </span>
+                      <span className="text-xs uppercase tracking-[0.4em] font-black text-brand-gold/60 mt-2">
+                        {brand.suffix}
+                      </span>
+                    </div>
+
+                    <div className="h-px w-12 bg-brand-gold/30 group-hover:w-full transition-all duration-700" />
+
+                    <p className="text-brand-ink/40 text-sm leading-relaxed group-hover:text-brand-ink/60 transition-colors">
+                      {brand.desc}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Glassmorphism Hover Overlay */}
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-serif mb-2 group-hover:text-white transition-colors">{brand.name}</h3>
-              <p className="text-brand-ink/40 text-[10px] md:text-xs group-hover:text-brand-cream/60 transition-colors uppercase tracking-widest font-black leading-none">{brand.desc}</p>
             </motion.div>
           ))}
         </div>
