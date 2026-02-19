@@ -396,75 +396,6 @@ const MarketplaceTicker = () => {
   );
 };
 
-const TerminalPulse = () => {
-  const stats = [
-    { label: 'Active Cold Chain', value: 124, unit: 'Units', icon: Activity },
-    { label: 'Network Producers', value: 850, unit: 'Partners', icon: Globe },
-    { label: 'Daily Inspection', value: 12, unit: 'K Pallets', icon: ShieldCheck },
-    { label: 'Terminal Uptime', value: 99.9, unit: '%', icon: Clock }
-  ];
-
-  return (
-    <section className="py-24 md:py-48 bg-brand-ink text-brand-cream relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="grid grid-cols-12 h-full w-full">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="border-r border-white/20 h-full" />
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-12">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">Live Pulse • Terminal Action</span>
-            </div>
-            <h2 className="text-5xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
-              The Engine of <br />
-              <span className="italic text-brand-cream/40">Freshness.</span>
-            </h2>
-          </div>
-          <p className="text-brand-cream/40 text-sm md:text-base max-w-xs font-mono">
-            {">"} Real-time monitoring of distribution metrics and cold-chain integrity across the Ontario Food Terminal.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-[3rem] overflow-hidden border border-white/10">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-brand-ink p-12 md:p-16 group hover:bg-brand-green transition-colors duration-700"
-            >
-              <stat.icon className="w-8 h-8 text-brand-gold mb-12 group-hover:scale-110 transition-transform" />
-              <div className="space-y-4">
-                <div className="flex items-baseline gap-2">
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="text-5xl md:text-7xl font-serif"
-                  >
-                    {stat.value}
-                  </motion.span>
-                  <span className="text-brand-gold font-mono text-xs uppercase">{stat.unit}</span>
-                </div>
-                <div className="h-px w-12 bg-white/20 group-hover:w-full transition-all duration-700" />
-                <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40 group-hover:text-white/80 transition-colors">
-                  {stat.label}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const ProduceGrid = () => {
   const categories = [
@@ -912,7 +843,6 @@ const HomePage = () => {
       <FloatingAssets />
       <Hero />
       <MarketplaceTicker />
-      <TerminalPulse />
       <AboutSectionSnapshot />
       <HeritageTimeline />
       <ProduceGrid />
