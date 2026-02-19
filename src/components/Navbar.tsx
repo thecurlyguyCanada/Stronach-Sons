@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Leaf, Menu, X, Instagram, Linkedin } from 'lucide-react';
@@ -25,6 +26,7 @@ export const Navbar = () => {
     ];
 
     return (
+        <>
         <nav className={cn(
             "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-6",
             isScrolled || !isHome ? "bg-brand-cream/95 backdrop-blur-md lg:backdrop-blur-xl py-4 border-b border-brand-ink/5" : "bg-brand-cream/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-brand-ink/5 lg:border-transparent"
@@ -76,52 +78,57 @@ export const Navbar = () => {
                 </button>
             </div>
 
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <motion.div
-                        initial={{ x: '100%' }}
-                        animate={{ x: 0 }}
-                        exit={{ x: '100%' }}
-                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 z-[9999] p-12 flex flex-col justify-between"
-                        style={{ backgroundColor: '#F5F2ED' }}
-                    >
-                        <div className="flex justify-between items-center">
-                            <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>
-                            <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-brand-ink text-brand-cream rounded-full">
-                                <X />
-                            </button>
-                        </div>
-                        <div className="flex flex-col gap-8">
-                            {navItems.map((item, idx) => (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    key={item.name}
-                                >
-                                    <Link
-                                        to={item.path}
-                                        className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </div>
-                        <div className="flex justify-between items-end">
-                            <div className="text-xs uppercase tracking-widest text-brand-ink/40">
-                                © 2026 Stronach & Sons 2020
-                            </div>
-                            <div className="flex gap-4">
-                                <Instagram className="w-5 h-5" />
-                                <Linkedin className="w-5 h-5" />
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </nav>
+
+            {createPortal(
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="fixed inset-0 z-[9999] p-12 flex flex-col justify-between"
+                            style={{ backgroundColor: '#F5F2ED' }}
+                        >
+                            <div className="flex justify-between items-center">
+                                <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>
+                                <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-brand-ink text-brand-cream rounded-full">
+                                    <X />
+                                </button>
+                            </div>
+                            <div className="flex flex-col gap-8">
+                                {navItems.map((item, idx) => (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        key={item.name}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+                            </div>
+                            <div className="flex justify-between items-end">
+                                <div className="text-xs uppercase tracking-widest text-brand-ink/40">
+                                    © 2026 Stronach & Sons 2020
+                                </div>
+                                <div className="flex gap-4">
+                                    <Instagram className="w-5 h-5" />
+                                    <Linkedin className="w-5 h-5" />
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
+        </>
     );
 };
