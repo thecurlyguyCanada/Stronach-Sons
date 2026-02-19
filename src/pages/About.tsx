@@ -37,6 +37,7 @@ const AboutPage = () => {
                                 <img
                                     src="/images/about_wholesale_produce.png"
                                     alt="Legacy Produce"
+                                    loading="lazy"
                                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                                 />
                             </div>
