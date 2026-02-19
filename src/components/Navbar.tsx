@@ -83,7 +83,8 @@ export const Navbar = () => {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 bg-brand-cream z-[9999] p-12 flex flex-col justify-between"
+                        className="fixed inset-0 z-[9999] p-12 flex flex-col justify-between"
+                        style={{ backgroundColor: '#F5F2ED' }}
                     >
                         <div className="flex justify-between items-center">
                             <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>
