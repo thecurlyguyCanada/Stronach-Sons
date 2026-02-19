@@ -3,124 +3,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'motion/react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'motion/react';
 import {
   Leaf,
-  Globe,
-  Droplets,
   ArrowRight,
-  Menu,
-  X,
-  ChevronRight,
-  Instagram,
-  Twitter,
-  Linkedin,
   ArrowUpRight,
   MapPin,
   Clock,
-  Users
 } from 'lucide-react';
 import { cn } from './lib/utils';
-
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <nav className={cn(
-      "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-6",
-      isScrolled ? "bg-brand-cream/90 backdrop-blur-xl py-4 border-b border-brand-ink/5" : "bg-transparent"
-    )}>
-      <div className="max-w-[1800px] mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-10 h-10 bg-brand-green rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
-            <Leaf className="text-brand-cream w-6 h-6" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green">Stronach & Sons</span>
-            <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Est. 1970</span>
-          </div>
-        </div>
-
-        <div className="hidden lg:flex items-center gap-12">
-          {['Our Legacy', 'Produce', 'Partners', 'Logistics'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
-              className="text-[11px] font-bold uppercase tracking-[0.2em] hover:text-brand-gold transition-colors relative group"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all group-hover:w-full" />
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-6">
-          <button className="text-xs font-bold uppercase tracking-widest hover:text-brand-olive transition-colors">
-            Contact
-          </button>
-          <button className="bg-brand-ink text-brand-cream px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-ink/10">
-            Wholesale Inquiry
-          </button>
-        </div>
-
-        <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X className="text-brand-green" /> : <Menu className={cn(isScrolled ? "text-brand-green" : "text-white")} />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-brand-cream z-[60] p-12 flex flex-col justify-between"
-          >
-            <div className="flex justify-between items-center">
-              <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>
-              <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-brand-ink text-brand-cream rounded-full">
-                <X />
-              </button>
-            </div>
-            <div className="flex flex-col gap-8">
-              {['Our Legacy', 'Produce', 'Partners', 'Logistics'].map((item, idx) => (
-                <motion.a
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </div>
-            <div className="flex justify-between items-end">
-              <div className="text-xs uppercase tracking-widest text-brand-ink/40">
-                © 2026 Stronach & Sons 2020
-              </div>
-              <div className="flex gap-4">
-                <Instagram className="w-5 h-5" />
-                <Linkedin className="w-5 h-5" />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-};
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import AboutPage from './pages/About';
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -197,7 +93,7 @@ const Hero = () => {
   );
 };
 
-const AboutSection = () => {
+const AboutSectionSnapshot = () => {
   return (
     <section id="our-legacy" className="py-32 bg-brand-cream relative overflow-hidden">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -213,9 +109,6 @@ const AboutSection = () => {
             </p>
             <p>
               Quality is at the core of everything we do. As an established produce wholesaler in Ontario, we carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability.
-            </p>
-            <p>
-              Looking ahead, Stronach & Sons 2020 is focused on intentional, sustainable growth. We are expanding our customer and vendor portfolio with partners who share our dedication to quality, accountability, and long-term success.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-3 gap-8 border-t border-brand-ink/10 pt-12">
@@ -329,7 +222,6 @@ const ProduceGrid = () => {
               src={cat.img}
               alt={cat.title}
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
-              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
 
@@ -352,58 +244,6 @@ const ProduceGrid = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
-const BrandsSection = () => {
-  const brands = [
-    { name: 'Little Bear', desc: 'Premium North American Producer' },
-    { name: 'Washington Fruit', desc: 'Top-tier Apple & Pear Growers' },
-    { name: 'Dole', desc: 'Global Standard in Fresh Vegetables' },
-    { name: 'Collins Farms', desc: 'Local Ontario Heritage Grower' },
-    { name: 'Saliba Farms', desc: 'Trusted Local Ontario Partner' },
-    { name: 'Caledon Farms', desc: 'Excellence in Local Agriculture' }
-  ];
-
-  return (
-    <section id="partners" className="py-32 px-6 md:px-12 max-w-[1800px] mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
-        <div className="max-w-3xl">
-          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Our Partners</span>
-          <h2 className="text-6xl md:text-[8vw] font-serif leading-[0.85] tracking-tighter">
-            Trusted <br />
-            <span className="italic text-brand-olive">Alliances</span>
-          </h2>
-        </div>
-        <div className="max-w-sm">
-          <p className="text-brand-ink/60 text-sm leading-relaxed mb-8 italic">
-            "We believe the best produce comes from strong partnerships. We proudly support local Ontario growers while maintaining long-standing relationships with top North American producers."
-          </p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {brands.map((brand, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            className="group p-12 bg-white rounded-[2.5rem] border border-brand-ink/5 hover:bg-brand-green hover:border-brand-green transition-all duration-500 cursor-pointer"
-          >
-            <div className="flex justify-between items-start mb-8">
-              <div className="w-12 h-12 rounded-full bg-brand-cream flex items-center justify-center text-brand-green group-hover:bg-brand-gold group-hover:text-brand-ink transition-colors">
-                <Users className="w-6 h-6" />
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-brand-ink/20 group-hover:text-brand-gold transition-colors" />
-            </div>
-            <h3 className="text-3xl font-serif mb-2 group-hover:text-white transition-colors">{brand.name}</h3>
-            <p className="text-brand-ink/40 text-sm group-hover:text-brand-cream/60 transition-colors uppercase tracking-widest font-bold">{brand.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -474,146 +314,62 @@ const LogisticsSection = () => {
   );
 };
 
-const Footer = () => {
+const HomePage = () => {
   return (
-    <footer className="bg-brand-ink text-brand-cream pt-32 pb-12 relative overflow-hidden">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-32">
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-12">
-              <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center">
-                <Leaf className="text-brand-cream w-7 h-7" />
-              </div>
-              <span className="font-serif text-4xl font-bold tracking-tighter">Stronach & Sons</span>
+    <>
+      <Hero />
+      <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="flex items-center gap-12 px-6">
+              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Ontario Food Terminal</span>
+              <Leaf className="w-4 h-4 text-brand-ink" />
+              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Generations of Quality</span>
+              <Leaf className="w-4 h-4 text-brand-ink" />
+              <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Trusted Wholesale Partner</span>
+              <Leaf className="w-4 h-4 text-brand-ink" />
             </div>
-            <h3 className="text-3xl md:text-5xl font-serif italic mb-12 leading-tight max-w-md">
-              Generations of <br />
-              <span className="text-brand-gold">Excellence</span> in Produce.
-            </h3>
-            <div className="flex gap-6">
-              {[Linkedin, Twitter, Instagram].map((Icon, idx) => (
-                <a key={idx} href="#" className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-ink hover:border-brand-gold transition-all duration-500">
-                  <Icon className="w-6 h-6" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
-            <div>
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-10">Company</h5>
-              <ul className="space-y-6 text-sm font-medium text-brand-cream/40">
-                <li><a href="#" className="hover:text-white transition-colors">Our Legacy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Partnerships</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Wholesale</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-10">Brands</h5>
-              <ul className="space-y-6 text-sm font-medium text-brand-cream/40">
-                <li><a href="#" className="hover:text-white transition-colors">Little Bear</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Washington Fruit</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Dole</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Collins Farms</a></li>
-              </ul>
-            </div>
-            <div className="col-span-2 md:col-span-1">
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-10">Inquiries</h5>
-              <p className="text-sm text-brand-cream/40 mb-8 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="bg-transparent border-b border-white/20 w-full py-4 text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                />
-                <button className="absolute right-0 top-1/2 -translate-y-1/2 text-brand-gold hover:text-white transition-colors">
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-brand-cream/20">
-          <div>© 2026 Stronach & Sons 2020. All Rights Reserved.</div>
-          <div className="flex gap-12">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>
-          </div>
+          ))}
         </div>
       </div>
-    </footer>
-  );
-};
+      <AboutSectionSnapshot />
+      <ProduceGrid />
+      <LogisticsSection />
 
-export default function App() {
-  return (
-    <div className="min-h-screen relative">
-      <div className="grain" />
-      <Navbar />
-      <main>
-        <Hero />
-
-        {/* Marquee Section */}
-        <div className="bg-brand-gold py-6 overflow-hidden border-y border-brand-ink/10">
-          <div className="flex whitespace-nowrap animate-marquee">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex items-center gap-12 px-6">
-                <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Ontario Food Terminal</span>
-                <Leaf className="w-4 h-4 text-brand-ink" />
-                <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Generations of Quality</span>
-                <Leaf className="w-4 h-4 text-brand-ink" />
-                <span className="text-brand-ink text-xs font-black uppercase tracking-[0.5em]">Trusted Wholesale Partner</span>
-                <Leaf className="w-4 h-4 text-brand-ink" />
-              </div>
-            ))}
+      <section className="py-32 px-6 md:px-12">
+        <div className="max-w-[1800px] mx-auto bg-brand-green rounded-[4rem] p-12 md:p-32 text-center relative overflow-hidden group">
+          <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-1000">
+            <img
+              src="/images/cta_background.png"
+              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]"
+              alt="Background Pattern"
+            />
           </div>
-        </div>
-
-        <AboutSection />
-        <ProduceGrid />
-        <BrandsSection />
-        <LogisticsSection />
-
-        {/* Call to Action Section */}
-        <section className="py-32 px-6 md:px-12">
-          <div className="max-w-[1800px] mx-auto bg-brand-green rounded-[4rem] p-12 md:p-32 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-1000">
-              <img
-                src="/images/cta_background.png"
-                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]"
-                alt="Background Pattern"
-              />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative z-10"
+          >
+            <span className="text-brand-gold uppercase tracking-[0.5em] text-[10px] font-black mb-8 block">Wholesale Inquiry</span>
+            <h2 className="text-5xl md:text-[7vw] font-serif text-white mb-12 leading-[0.85] tracking-tighter">
+              Grow Your <br />
+              <span className="italic text-brand-cream/60">Success With Us</span>
+            </h2>
+            <p className="text-brand-cream/60 text-xl max-w-2xl mx-auto mb-16 font-light leading-relaxed">
+              We are expanding our customer and vendor portfolio with partners who share our dedication to quality and accountability.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <button className="bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all transform hover:-translate-y-1 shadow-2xl">
+                Become a Partner
+              </button>
+              <button className="text-white border border-white/20 px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all">
+                Contact Sales
+              </button>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative z-10"
-            >
-              <span className="text-brand-gold uppercase tracking-[0.5em] text-[10px] font-black mb-8 block">Wholesale Inquiry</span>
-              <h2 className="text-5xl md:text-[7vw] font-serif text-white mb-12 leading-[0.85] tracking-tighter">
-                Grow Your <br />
-                <span className="italic text-brand-cream/60">Success With Us</span>
-              </h2>
-              <p className="text-brand-cream/60 text-xl max-w-2xl mx-auto mb-16 font-light leading-relaxed">
-                We are expanding our customer and vendor portfolio with partners who share our dedication to quality and accountability.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="bg-brand-gold text-brand-ink px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all transform hover:-translate-y-1 shadow-2xl">
-                  Become a Partner
-                </button>
-                <button className="text-white border border-white/20 px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all">
-                  Contact Sales
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-      <Footer />
+          </motion.div>
+        </div>
+      </section>
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -625,6 +381,35 @@ export default function App() {
           animation: marquee 30s linear infinite;
         }
       `}} />
+    </>
+  );
+};
+
+export default function App() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.slice(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
+  return (
+    <div className="min-h-screen relative">
+      <div className="grain" />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
