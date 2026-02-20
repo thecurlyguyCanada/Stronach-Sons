@@ -42,7 +42,7 @@ export const Navbar = () => {
                     </div>
                     <div className="flex flex-col leading-none">
                         <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green whitespace-nowrap">Stronach & Sons</span>
-                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Ownership Changed 2020</span>
+                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Est. 1954</span>
                     </div>
                 </Link>
 

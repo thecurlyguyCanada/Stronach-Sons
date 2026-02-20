@@ -23,7 +23,7 @@ const AboutPage = () => {
                                 Stronach and <span className="italic text-brand-olive">Sons 2020</span>.
                             </h1>
                             <p className="text-brand-ink/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                                Established at the Ontario Food Terminal in 2020, Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise and a commitment to excellence.
+                                Founded in 1954 at the Ontario Food Terminal, Stronach & Sons is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company is built on over 70 years of expertise and a renewed commitment to excellence.
                             </p>
                         </motion.div>
 
@@ -42,9 +42,9 @@ const AboutPage = () => {
                                 />
                             </div>
                             <div className="absolute -bottom-6 -left-6 md:-bottom-12 md:-left-12 bg-white p-8 md:p-12 rounded-[1.5rem] md:rounded-[2rem] shadow-xl border border-brand-ink/5 max-w-[200px] md:max-w-[280px]">
-                                <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-3 md:mb-4">2020</div>
+                                <div className="text-brand-gold text-3xl md:text-4xl font-serif mb-3 md:mb-4">1954</div>
                                 <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-black text-brand-ink/40 leading-relaxed">
-                                    Established year at the heart of Ontario's food distribution.
+                                    Founded at the heart of Ontario's food distribution.
                                 </p>
                             </div>
                         </motion.div>

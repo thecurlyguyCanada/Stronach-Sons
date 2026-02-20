@@ -140,7 +140,7 @@ const Hero = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="text-[40vw] font-serif text-white text-outline leading-none font-black italic select-none"
         >
-          2020
+          1954
         </motion.h2>
       </div>
 
@@ -161,7 +161,7 @@ const Hero = () => {
                 >
                   <div className="h-px w-12 bg-brand-gold" />
                   <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                    Ownership Changed 2020 • Wholesale Excellence
+                    Est. 1954 • Wholesale Excellence
                   </span>
                 </motion.div>
 
@@ -255,14 +255,14 @@ const AboutSectionSnapshot = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="order-2 lg:order-1"
         >
-          <span className="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-black mb-6 block">About Us</span>
+          <span className="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-black mb-6 block">Who We Are</span>
           <h2 className="text-4xl md:text-7xl font-serif mb-10 leading-[1.1] tracking-tight">
             Driven by <br />
             <span className="italic text-brand-olive">Progress</span>
           </h2>
           <div className="space-y-8 text-brand-ink/70 text-base md:text-lg font-light leading-relaxed max-w-xl">
             <p>
-              Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise, strong relationships, and an uncompromising commitment to quality.
+              Founded in 1954, Stronach & Sons is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company combines decades of heritage with modern expertise, strong relationships, and an uncompromising commitment to quality.
             </p>
             <p>
               Quality is at the core of everything we do. As an established produce wholesaler in Ontario, we carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability.
@@ -270,7 +270,7 @@ const AboutSectionSnapshot = () => {
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 border-t border-brand-ink/10 pt-12">
             <div>
-              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">2020</div>
+              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">1954</div>
               <div className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-brand-ink/40">Established Year</div>
             </div>
             <div>
@@ -310,10 +310,11 @@ const AboutSectionSnapshot = () => {
 
 const HeritageTimeline = () => {
   const timelineEvents = [
-    { year: '2020', title: 'The Launch', description: 'Stronach & Sons 2020 established at the Ontario Food Terminal with a focus on premium quality.', icon: History },
-    { year: '2022', title: 'Network Expansion', description: 'Rapidly expanded operations and built strong relationships with top-tier North American producers.', icon: TrendingUp },
-    { year: '2024', title: 'Modern Logistics', description: 'Implemented advanced tracking systems to ensure peak freshness and cold-chain integrity.', icon: Activity },
-    { year: 'Today', title: 'Trusted Partner', description: 'Leading as a trusted wholesale partner, driven by progress and uncompromising quality standards.', icon: Globe },
+    { year: '1954', title: 'The Beginning', description: 'Founded at the Ontario Food Terminal, establishing roots as a trusted wholesale produce supplier serving the Greater Toronto Area.', icon: History },
+    { year: '1980s', title: 'Growth & Expansion', description: 'Expanded product lines and built lasting relationships with growers across Ontario and North America.', icon: TrendingUp },
+    { year: '2020', title: 'New Ownership', description: 'Ownership changed to a new generation of experienced operators, bringing modern vision, stronger industry connections, and a renewed commitment to excellence.', icon: Award },
+    { year: '2022', title: 'Network Expansion', description: 'Rapidly scaled operations with top-tier North American producers and invested in advanced cold-chain logistics.', icon: Activity },
+    { year: 'Today', title: 'Trusted Partner', description: 'Leading as a trusted wholesale partner — 70+ years of heritage combined with modern expertise and uncompromising quality standards.', icon: Globe },
   ];
 
   return (
