@@ -19,8 +19,7 @@ import {
   Activity,
   CheckCircle2,
   Calendar,
-  Globe,
-  Download
+  Globe
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
@@ -140,7 +139,7 @@ const Hero = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="text-[40vw] font-serif text-white text-outline leading-none font-black italic select-none"
         >
-          2020
+          1954
         </motion.h2>
       </div>
 
@@ -161,7 +160,7 @@ const Hero = () => {
                 >
                   <div className="h-px w-12 bg-brand-gold" />
                   <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                    Ownership Changed 2020 • Wholesale Excellence
+                    Est. 1954 • Wholesale Excellence
                   </span>
                 </motion.div>
 
@@ -255,14 +254,14 @@ const AboutSectionSnapshot = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="order-2 lg:order-1"
         >
-          <span className="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-black mb-6 block">About Us</span>
+          <span className="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-black mb-6 block">Who We Are</span>
           <h2 className="text-4xl md:text-7xl font-serif mb-10 leading-[1.1] tracking-tight">
             Driven by <br />
             <span className="italic text-brand-olive">Progress</span>
           </h2>
           <div className="space-y-8 text-brand-ink/70 text-base md:text-lg font-light leading-relaxed max-w-xl">
             <p>
-              Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise, strong relationships, and an uncompromising commitment to quality.
+              Founded in 1954, Stronach & Sons is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company combines decades of heritage with modern expertise, strong relationships, and an uncompromising commitment to quality.
             </p>
             <p>
               Quality is at the core of everything we do. As an established produce wholesaler in Ontario, we carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability.
@@ -270,7 +269,7 @@ const AboutSectionSnapshot = () => {
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 border-t border-brand-ink/10 pt-12">
             <div>
-              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">2020</div>
+              <div className="text-3xl md:text-4xl font-serif text-brand-green mb-2">1954</div>
               <div className="text-[9px] md:text-[10px] uppercase tracking-widest font-bold text-brand-ink/40">Established Year</div>
             </div>
             <div>
@@ -310,10 +309,11 @@ const AboutSectionSnapshot = () => {
 
 const HeritageTimeline = () => {
   const timelineEvents = [
-    { year: '2020', title: 'The Launch', description: 'Stronach & Sons 2020 established at the Ontario Food Terminal with a focus on premium quality.', icon: History },
-    { year: '2022', title: 'Network Expansion', description: 'Rapidly expanded operations and built strong relationships with top-tier North American producers.', icon: TrendingUp },
-    { year: '2024', title: 'Modern Logistics', description: 'Implemented advanced tracking systems to ensure peak freshness and cold-chain integrity.', icon: Activity },
-    { year: 'Today', title: 'Trusted Partner', description: 'Leading as a trusted wholesale partner, driven by progress and uncompromising quality standards.', icon: Globe },
+    { year: '1954', title: 'The Beginning', description: 'Founded at the Ontario Food Terminal, establishing roots as a trusted wholesale produce supplier serving the Greater Toronto Area.', icon: History },
+    { year: '1980s', title: 'Growth & Expansion', description: 'Expanded product lines and built lasting relationships with growers across Ontario and North America.', icon: TrendingUp },
+    { year: '2020', title: 'New Ownership', description: 'Ownership changed to a new generation of experienced operators, bringing modern vision, stronger industry connections, and a renewed commitment to excellence.', icon: Award },
+    { year: '2022', title: 'Network Expansion', description: 'Rapidly scaled operations with top-tier North American producers and invested in advanced cold-chain logistics.', icon: Activity },
+    { year: 'Today', title: 'Trusted Partner', description: 'Leading as a trusted wholesale partner — 70+ years of heritage combined with modern expertise and uncompromising quality standards.', icon: Globe },
   ];
 
   return (
@@ -533,12 +533,6 @@ const ProduceGrid = () => {
           <p className="text-brand-ink/60 text-sm leading-relaxed mb-8 italic">
             "We carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability."
           </p>
-          <a href="#wholesale-catalog" className="flex items-center gap-4 group cursor-pointer inline-flex">
-            <span className="text-xs font-black uppercase tracking-widest">Wholesale Catalog</span>
-            <div className="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center group-hover:bg-brand-ink group-hover:text-brand-cream transition-all">
-              <ArrowRight className="w-4 h-4" />
-            </div>
-          </a>
         </div>
       </div>
 
@@ -546,203 +540,6 @@ const ProduceGrid = () => {
         {categories.map((cat, idx) => (
           <TiltCard key={idx} cat={cat} idx={idx} />
         ))}
-      </div>
-    </section>
-  );
-};
-
-const WholesaleCatalog = () => {
-  const productList = [
-    {
-      category: 'Apples & Cherries',
-      products: [
-        { name: 'Gala Apples', unit: '40 lb case', availability: 'Year-Round' },
-        { name: 'Fuji Apples', unit: '40 lb case', availability: 'Year-Round' },
-        { name: 'Honeycrisp Apples', unit: '40 lb case', availability: 'Seasonal' },
-        { name: 'Granny Smith Apples', unit: '40 lb case', availability: 'Year-Round' },
-        { name: 'Red Delicious Apples', unit: '40 lb case', availability: 'Year-Round' },
-        { name: 'McIntosh Apples', unit: '40 lb case', availability: 'Seasonal' },
-        { name: 'Sweet Cherries', unit: '20 lb case', availability: 'Seasonal' },
-        { name: 'Rainier Cherries', unit: '20 lb case', availability: 'Seasonal' },
-      ]
-    },
-    {
-      category: 'Leafy Greens',
-      products: [
-        { name: 'Romaine Lettuce', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Iceberg Lettuce', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Green Leaf Lettuce', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Red Leaf Lettuce', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Baby Spinach', unit: '4 lb case', availability: 'Year-Round' },
-        { name: 'Kale (Green)', unit: '24 bunch case', availability: 'Year-Round' },
-        { name: 'Spring Mix', unit: '4 lb case', availability: 'Year-Round' },
-        { name: 'Arugula', unit: '4 lb case', availability: 'Year-Round' },
-      ]
-    },
-    {
-      category: 'Mix Vegetables',
-      products: [
-        { name: 'Broccoli Crowns', unit: '20 lb case', availability: 'Year-Round' },
-        { name: 'Cauliflower', unit: '12 ct case', availability: 'Year-Round' },
-        { name: 'Green Beans', unit: '25 lb case', availability: 'Year-Round' },
-        { name: 'Bell Peppers (Assorted)', unit: '25 lb case', availability: 'Year-Round' },
-        { name: 'Cucumbers', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Tomatoes (Field)', unit: '25 lb case', availability: 'Seasonal' },
-        { name: 'Tomatoes (Greenhouse)', unit: '15 lb case', availability: 'Year-Round' },
-        { name: 'Celery', unit: '24 ct case', availability: 'Year-Round' },
-        { name: 'Carrots (Whole)', unit: '50 lb case', availability: 'Year-Round' },
-        { name: 'Corn on the Cob', unit: '48 ct case', availability: 'Seasonal' },
-      ]
-    },
-    {
-      category: 'Onions',
-      products: [
-        { name: 'Yellow Onions', unit: '50 lb bag', availability: 'Year-Round' },
-        { name: 'Red Onions', unit: '25 lb bag', availability: 'Year-Round' },
-        { name: 'White Onions', unit: '25 lb bag', availability: 'Year-Round' },
-        { name: 'Sweet Onions (Vidalia)', unit: '40 lb case', availability: 'Seasonal' },
-        { name: 'Green Onions', unit: '48 bunch case', availability: 'Year-Round' },
-        { name: 'Shallots', unit: '5 lb bag', availability: 'Year-Round' },
-        { name: 'Pearl Onions', unit: '10 lb bag', availability: 'Year-Round' },
-      ]
-    },
-    {
-      category: 'Zucchini & Squash',
-      products: [
-        { name: 'Green Zucchini', unit: '22 lb case', availability: 'Year-Round' },
-        { name: 'Yellow Squash', unit: '22 lb case', availability: 'Year-Round' },
-        { name: 'Butternut Squash', unit: '35 lb case', availability: 'Seasonal' },
-        { name: 'Acorn Squash', unit: '35 lb case', availability: 'Seasonal' },
-        { name: 'Spaghetti Squash', unit: '35 lb case', availability: 'Seasonal' },
-        { name: 'Kabocha Squash', unit: '35 lb case', availability: 'Seasonal' },
-      ]
-    },
-  ];
-
-  const handleDownloadPDF = () => {
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
-
-    const html = `
-      <!DOCTYPE html>
-      <html><head><title>Stronach & Sons 2020 — Wholesale Catalog</title>
-      <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; color: #141414; }
-        h1 { font-size: 28px; margin-bottom: 4px; }
-        .subtitle { font-size: 14px; color: #5A5A40; margin-bottom: 32px; }
-        h2 { font-size: 18px; color: #1A3C34; margin-top: 28px; margin-bottom: 12px; border-bottom: 2px solid #C5A059; padding-bottom: 6px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
-        th { background: #1A3C34; color: #F5F2ED; padding: 8px 12px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
-        td { padding: 8px 12px; border-bottom: 1px solid #eee; }
-        tr:hover td { background: #f9f7f4; }
-        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        .tag-year { background: #e8f5e9; color: #1A3C34; }
-        .tag-seasonal { background: #fff3e0; color: #C5A059; }
-        .footer { margin-top: 40px; font-size: 11px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 16px; }
-        @media print { body { padding: 20px; } }
-      </style></head><body>
-      <h1>Stronach & Sons 2020</h1>
-      <div class="subtitle">Wholesale Produce Catalog — Ontario Food Terminal &bull; Contact: stronson@stronachandosons.ca</div>
-      ${productList.map(cat => `
-        <h2>${cat.category}</h2>
-        <table>
-          <thead><tr><th>Product</th><th>Unit Size</th><th>Availability</th></tr></thead>
-          <tbody>${cat.products.map(p => `
-            <tr>
-              <td>${p.name}</td>
-              <td>${p.unit}</td>
-              <td><span class="tag ${p.availability === 'Year-Round' ? 'tag-year' : 'tag-seasonal'}">${p.availability}</span></td>
-            </tr>`).join('')}
-          </tbody>
-        </table>`).join('')}
-      <div class="footer">
-        <p>Stronach & Sons 2020 — Ontario Food Terminal</p>
-        <p>Warehouse: 33 Connell Ct, Etobicoke, ON M8Z 1E8</p>
-        <p>For pricing and orders, please contact stronson@stronachandosons.ca</p>
-        <p>Prices subject to market conditions. Contact us for current pricing.</p>
-      </div>
-      </body></html>`;
-
-    printWindow.document.write(html);
-    printWindow.document.close();
-    printWindow.onload = () => { printWindow.print(); };
-  };
-
-  return (
-    <section id="wholesale-catalog" className="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
-          <div>
-            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Price List</span>
-            <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] tracking-tighter">
-              Wholesale <br />
-              <span className="italic text-brand-olive">Catalog</span>
-            </h2>
-          </div>
-          <button
-            onClick={handleDownloadPDF}
-            className="flex items-center gap-3 bg-brand-ink text-brand-cream px-8 py-4 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg"
-          >
-            <Download className="w-4 h-4" />
-            Download Catalog PDF
-          </button>
-        </div>
-
-        <div className="space-y-12">
-          {productList.map((cat, catIdx) => (
-            <motion.div
-              key={catIdx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: catIdx * 0.05, duration: 0.6 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-serif text-brand-green mb-6">{cat.category}</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[500px]">
-                  <thead>
-                    <tr className="border-b-2 border-brand-gold/30">
-                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4 pr-8">Product</th>
-                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4 pr-8">Unit Size</th>
-                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4">Availability</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cat.products.map((product, pIdx) => (
-                      <tr key={pIdx} className="border-b border-brand-ink/5 hover:bg-brand-cream/50 transition-colors">
-                        <td className="py-4 pr-8 text-sm md:text-base font-medium text-brand-ink">{product.name}</td>
-                        <td className="py-4 pr-8 text-sm text-brand-ink/60">{product.unit}</td>
-                        <td className="py-4">
-                          <span className={cn(
-                            "text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full",
-                            product.availability === 'Year-Round'
-                              ? "bg-brand-green/10 text-brand-green"
-                              : "bg-brand-gold/10 text-brand-gold"
-                          )}>
-                            {product.availability}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-16 p-8 md:p-12 bg-brand-cream rounded-[2rem] border border-brand-ink/5 text-center">
-          <p className="text-brand-ink/60 text-sm md:text-base mb-6">
-            For current pricing and bulk order inquiries, contact us directly.
-          </p>
-          <a
-            href="mailto:stronson@stronachandosons.ca"
-            className="inline-flex items-center gap-3 bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-brand-ink hover:text-brand-cream transition-all"
-          >
-            Request Pricing
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
       </div>
     </section>
   );
@@ -875,12 +672,12 @@ const LogisticsSection = () => {
 
 const PartnersSection = () => {
   const brands = [
-    { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34', url: 'https://littlebearproduce.com', logo: '🥬' },
-    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059', url: 'https://www.washingtonfruit.com', logo: '🍎' },
-    { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414', url: 'https://www.dole.com', logo: '🍌' },
-    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40', url: 'https://www.collinsfarms.ca', logo: '🥕' },
-    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34', url: 'https://www.salibafarms.com', logo: '🌿' },
-    { name: 'Art', suffix: 'Farms', region: 'Ontario', desc: 'Premium Ontario Fresh Produce', color: '#C5A059', url: 'https://www.artfarms.ca', logo: '🌾' }
+    { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34', url: 'https://littlebearproduce.com', logo: '/images/brands/little_bear.png' },
+    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059', url: 'https://www.washingtonfruit.com', logo: '/images/brands/washington_fruit.svg' },
+    { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414', url: 'https://www.dole.com', logo: '/images/brands/dole.png' },
+    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40', url: 'https://www.collinsfarms.ca', logo: '/images/brands/collins_farms.svg' },
+    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34', url: 'https://www.salibafarms.com', logo: '/images/brands/saliba_farms.svg' },
+    { name: 'Art', suffix: 'Farms', region: 'Ontario', desc: 'Premium Ontario Fresh Produce', color: '#C5A059', url: 'https://www.artfarms.ca', logo: '/images/brands/art_farms.jpg' }
   ];
 
   return (
@@ -931,8 +728,8 @@ const PartnersSection = () => {
 
                     <div className="space-y-6">
                       {/* Brand Logo */}
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border border-brand-ink/5 flex items-center justify-center text-3xl md:text-4xl shadow-sm">
-                        {brand.logo}
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border border-brand-ink/5 flex items-center justify-center shadow-sm overflow-hidden p-2">
+                        <img src={brand.logo} alt={`${brand.name} ${brand.suffix} logo`} className="w-full h-full object-contain" />
                       </div>
 
                       {/* Stylized Typographic Logo */}
@@ -1061,7 +858,6 @@ const HomePage = () => {
       <AboutSectionSnapshot />
       <HeritageTimeline />
       <ProduceGrid />
-      <WholesaleCatalog />
       <QualityLab />
       <LogisticsSection />
       <PartnersSection />

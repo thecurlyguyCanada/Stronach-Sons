@@ -42,7 +42,7 @@ export const Navbar = () => {
                     </div>
                     <div className="flex flex-col leading-none">
                         <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green whitespace-nowrap">Stronach & Sons</span>
-                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Ownership Changed 2020</span>
+                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Est. 1954</span>
                     </div>
                 </Link>
 
@@ -61,6 +61,17 @@ export const Navbar = () => {
                             <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all group-hover:w-full" />
                         </Link>
                     ))}
+                    <a
+                        href="/wholesale-catalog.pdf"
+                        download
+                        className={cn(
+                            "text-[11px] font-bold uppercase tracking-[0.2em] transition-colors relative group",
+                            isScrolled || !isHome ? "text-brand-ink" : "text-white"
+                        )}
+                    >
+                        Wholesale Catalog
+                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all group-hover:w-full" />
+                    </a>
                 </div>
 
                 <div className="hidden md:flex items-center gap-6">
@@ -119,6 +130,20 @@ export const Navbar = () => {
                                         </Link>
                                     </motion.div>
                                 ))}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: navItems.length * 0.1 }}
+                                >
+                                    <a
+                                        href="/wholesale-catalog.pdf"
+                                        download
+                                        className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Wholesale Catalog
+                                    </a>
+                                </motion.div>
                             </div>
                             <div className="flex justify-between items-end">
                                 <div className="text-xs uppercase tracking-widest text-brand-ink/40">
