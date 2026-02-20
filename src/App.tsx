@@ -656,7 +656,8 @@ const WholesaleCatalog = () => {
           </tbody>
         </table>`).join('')}
       <div class="footer">
-        <p>Stronach & Sons 2020 — Ontario Food Terminal, Toronto, ON</p>
+        <p>Stronach & Sons 2020 — Ontario Food Terminal</p>
+        <p>Warehouse: 33 Connell Ct, Etobicoke, ON M8Z 1E8</p>
         <p>For pricing and orders, please contact stronson@stronachandosons.ca</p>
         <p>Prices subject to market conditions. Contact us for current pricing.</p>
       </div>
@@ -832,7 +833,10 @@ const LogisticsSection = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <MapPin className="text-brand-gold w-5 h-5 md:w-6 md:h-6" />
-                <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest">Ontario Food Terminal Hub</span>
+                <div>
+                  <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest block">Ontario Food Terminal Hub</span>
+                  <span className="text-[10px] md:text-xs text-brand-cream/50">33 Connell Ct, Etobicoke, ON M8Z 1E8</span>
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <Clock className="text-brand-gold w-5 h-5 md:w-6 md:h-6" />

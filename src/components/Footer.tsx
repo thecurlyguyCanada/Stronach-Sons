@@ -55,7 +55,11 @@ export const Footer = () => {
                         </div>
                         <div className="col-span-1 lg:col-span-1">
                             <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Inquiries</h5>
-                            <p className="text-[13px] md:text-sm text-brand-cream/40 mb-8 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
+                            <p className="text-[13px] md:text-sm text-brand-cream/40 mb-4 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
+                            <p className="text-[13px] md:text-sm text-brand-cream/40 mb-8 leading-relaxed">
+                                <span className="text-brand-cream/60 font-bold">Warehouse:</span><br />
+                                33 Connell Ct, Etobicoke, ON M8Z 1E8
+                            </p>
                             <a
                                 href="mailto:stronson@stronachandosons.ca"
                                 className="inline-flex group items-center gap-4 text-sm font-bold uppercase tracking-widest text-white hover:text-brand-gold transition-colors"
