@@ -19,7 +19,8 @@ import {
   Activity,
   CheckCircle2,
   Calendar,
-  Globe
+  Globe,
+  Download
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
@@ -89,7 +90,7 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile]);
 
-  const titleWords = "Quality & Horizon".split(" ");
+  const titleWords = ["Stronach", "and", "Sons", "2020"];
 
   return (
     <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-brand-ink">
@@ -160,7 +161,7 @@ const Hero = () => {
                 >
                   <div className="h-px w-12 bg-brand-gold" />
                   <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-                    Est. 2020 • Wholesale Excellence
+                    Ownership Changed 2020 • Wholesale Excellence
                   </span>
                 </motion.div>
 
@@ -177,7 +178,7 @@ const Hero = () => {
                       }}
                       className={cn(
                         "inline-block mr-[0.2em]",
-                        word === "&" ? "italic font-normal text-brand-cream/80" : ""
+                        word === "and" ? "italic font-normal text-brand-cream/80" : ""
                       )}
                     >
                       {word}
@@ -400,32 +401,39 @@ const MarketplaceTicker = () => {
 const ProduceGrid = () => {
   const categories = [
     {
-      title: 'Heirloom Citrus',
-      desc: 'Hand-picked varieties from the Mediterranean basin, selected for high essential oil content and balanced acidity.',
+      title: 'Apples & Cherries',
+      desc: 'Premium hand-selected apples and cherries sourced from top North American orchards for peak freshness and flavor.',
       img: '/images/citrus_heirloom.png',
       tag: 'Seasonal',
       size: 'large'
     },
     {
-      title: 'Organic Roots',
-      desc: 'Nutrient-dense vegetables grown in volcanic soil.',
+      title: 'Leafy Greens',
+      desc: 'Fresh lettuce, spinach, kale, and mixed greens delivered daily for maximum crispness.',
+      img: '/images/greens_leafy.png',
+      tag: 'Daily',
+      size: 'small'
+    },
+    {
+      title: 'Mix Vegetables',
+      desc: 'Curated selection of fresh mixed vegetables for restaurants and retail partners.',
       img: '/images/roots_organic.png',
       tag: 'Core',
       size: 'small'
     },
     {
-      title: 'Exotic Berries',
-      desc: 'Delicate fruits cultivated with precision climate control.',
+      title: 'Onions',
+      desc: 'Ontario-grown and imported onions — red, yellow, white, and sweet varieties available year-round.',
       img: '/images/berries_exotic.png',
-      tag: 'Premium',
-      size: 'small'
+      tag: 'Year-Round',
+      size: 'large'
     },
     {
-      title: 'Leafy Greens',
-      desc: 'Hydroponically grown for maximum freshness and flavor.',
-      img: '/images/greens_leafy.png',
-      tag: 'Daily',
-      size: 'large'
+      title: 'Zucchini & Squash',
+      desc: 'Fresh zucchini and squash varieties sourced from local growers and premium suppliers.',
+      img: '/images/about_wholesale_produce.png',
+      tag: 'Seasonal',
+      size: 'small'
     }
   ];
 
@@ -525,12 +533,12 @@ const ProduceGrid = () => {
           <p className="text-brand-ink/60 text-sm leading-relaxed mb-8 italic">
             "We carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability."
           </p>
-          <div className="flex items-center gap-4 group cursor-pointer inline-flex">
+          <a href="#wholesale-catalog" className="flex items-center gap-4 group cursor-pointer inline-flex">
             <span className="text-xs font-black uppercase tracking-widest">Wholesale Catalog</span>
             <div className="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center group-hover:bg-brand-ink group-hover:text-brand-cream transition-all">
               <ArrowRight className="w-4 h-4" />
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -538,6 +546,203 @@ const ProduceGrid = () => {
         {categories.map((cat, idx) => (
           <TiltCard key={idx} cat={cat} idx={idx} />
         ))}
+      </div>
+    </section>
+  );
+};
+
+const WholesaleCatalog = () => {
+  const productList = [
+    {
+      category: 'Apples & Cherries',
+      products: [
+        { name: 'Gala Apples', unit: '40 lb case', availability: 'Year-Round' },
+        { name: 'Fuji Apples', unit: '40 lb case', availability: 'Year-Round' },
+        { name: 'Honeycrisp Apples', unit: '40 lb case', availability: 'Seasonal' },
+        { name: 'Granny Smith Apples', unit: '40 lb case', availability: 'Year-Round' },
+        { name: 'Red Delicious Apples', unit: '40 lb case', availability: 'Year-Round' },
+        { name: 'McIntosh Apples', unit: '40 lb case', availability: 'Seasonal' },
+        { name: 'Sweet Cherries', unit: '20 lb case', availability: 'Seasonal' },
+        { name: 'Rainier Cherries', unit: '20 lb case', availability: 'Seasonal' },
+      ]
+    },
+    {
+      category: 'Leafy Greens',
+      products: [
+        { name: 'Romaine Lettuce', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Iceberg Lettuce', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Green Leaf Lettuce', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Red Leaf Lettuce', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Baby Spinach', unit: '4 lb case', availability: 'Year-Round' },
+        { name: 'Kale (Green)', unit: '24 bunch case', availability: 'Year-Round' },
+        { name: 'Spring Mix', unit: '4 lb case', availability: 'Year-Round' },
+        { name: 'Arugula', unit: '4 lb case', availability: 'Year-Round' },
+      ]
+    },
+    {
+      category: 'Mix Vegetables',
+      products: [
+        { name: 'Broccoli Crowns', unit: '20 lb case', availability: 'Year-Round' },
+        { name: 'Cauliflower', unit: '12 ct case', availability: 'Year-Round' },
+        { name: 'Green Beans', unit: '25 lb case', availability: 'Year-Round' },
+        { name: 'Bell Peppers (Assorted)', unit: '25 lb case', availability: 'Year-Round' },
+        { name: 'Cucumbers', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Tomatoes (Field)', unit: '25 lb case', availability: 'Seasonal' },
+        { name: 'Tomatoes (Greenhouse)', unit: '15 lb case', availability: 'Year-Round' },
+        { name: 'Celery', unit: '24 ct case', availability: 'Year-Round' },
+        { name: 'Carrots (Whole)', unit: '50 lb case', availability: 'Year-Round' },
+        { name: 'Corn on the Cob', unit: '48 ct case', availability: 'Seasonal' },
+      ]
+    },
+    {
+      category: 'Onions',
+      products: [
+        { name: 'Yellow Onions', unit: '50 lb bag', availability: 'Year-Round' },
+        { name: 'Red Onions', unit: '25 lb bag', availability: 'Year-Round' },
+        { name: 'White Onions', unit: '25 lb bag', availability: 'Year-Round' },
+        { name: 'Sweet Onions (Vidalia)', unit: '40 lb case', availability: 'Seasonal' },
+        { name: 'Green Onions', unit: '48 bunch case', availability: 'Year-Round' },
+        { name: 'Shallots', unit: '5 lb bag', availability: 'Year-Round' },
+        { name: 'Pearl Onions', unit: '10 lb bag', availability: 'Year-Round' },
+      ]
+    },
+    {
+      category: 'Zucchini & Squash',
+      products: [
+        { name: 'Green Zucchini', unit: '22 lb case', availability: 'Year-Round' },
+        { name: 'Yellow Squash', unit: '22 lb case', availability: 'Year-Round' },
+        { name: 'Butternut Squash', unit: '35 lb case', availability: 'Seasonal' },
+        { name: 'Acorn Squash', unit: '35 lb case', availability: 'Seasonal' },
+        { name: 'Spaghetti Squash', unit: '35 lb case', availability: 'Seasonal' },
+        { name: 'Kabocha Squash', unit: '35 lb case', availability: 'Seasonal' },
+      ]
+    },
+  ];
+
+  const handleDownloadPDF = () => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const html = `
+      <!DOCTYPE html>
+      <html><head><title>Stronach & Sons 2020 — Wholesale Catalog</title>
+      <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; color: #141414; }
+        h1 { font-size: 28px; margin-bottom: 4px; }
+        .subtitle { font-size: 14px; color: #5A5A40; margin-bottom: 32px; }
+        h2 { font-size: 18px; color: #1A3C34; margin-top: 28px; margin-bottom: 12px; border-bottom: 2px solid #C5A059; padding-bottom: 6px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+        th { background: #1A3C34; color: #F5F2ED; padding: 8px 12px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+        tr:hover td { background: #f9f7f4; }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .tag-year { background: #e8f5e9; color: #1A3C34; }
+        .tag-seasonal { background: #fff3e0; color: #C5A059; }
+        .footer { margin-top: 40px; font-size: 11px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 16px; }
+        @media print { body { padding: 20px; } }
+      </style></head><body>
+      <h1>Stronach & Sons 2020</h1>
+      <div class="subtitle">Wholesale Produce Catalog — Ontario Food Terminal &bull; Contact: stronson@stronachandosons.ca</div>
+      ${productList.map(cat => `
+        <h2>${cat.category}</h2>
+        <table>
+          <thead><tr><th>Product</th><th>Unit Size</th><th>Availability</th></tr></thead>
+          <tbody>${cat.products.map(p => `
+            <tr>
+              <td>${p.name}</td>
+              <td>${p.unit}</td>
+              <td><span class="tag ${p.availability === 'Year-Round' ? 'tag-year' : 'tag-seasonal'}">${p.availability}</span></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>`).join('')}
+      <div class="footer">
+        <p>Stronach & Sons 2020 — Ontario Food Terminal</p>
+        <p>Warehouse: 33 Connell Ct, Etobicoke, ON M8Z 1E8</p>
+        <p>For pricing and orders, please contact stronson@stronachandosons.ca</p>
+        <p>Prices subject to market conditions. Contact us for current pricing.</p>
+      </div>
+      </body></html>`;
+
+    printWindow.document.write(html);
+    printWindow.document.close();
+    printWindow.onload = () => { printWindow.print(); };
+  };
+
+  return (
+    <section id="wholesale-catalog" className="py-20 md:py-32 bg-white relative overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
+          <div>
+            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 block">Price List</span>
+            <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] tracking-tighter">
+              Wholesale <br />
+              <span className="italic text-brand-olive">Catalog</span>
+            </h2>
+          </div>
+          <button
+            onClick={handleDownloadPDF}
+            className="flex items-center gap-3 bg-brand-ink text-brand-cream px-8 py-4 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-lg"
+          >
+            <Download className="w-4 h-4" />
+            Download Catalog PDF
+          </button>
+        </div>
+
+        <div className="space-y-12">
+          {productList.map((cat, catIdx) => (
+            <motion.div
+              key={catIdx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: catIdx * 0.05, duration: 0.6 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-serif text-brand-green mb-6">{cat.category}</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[500px]">
+                  <thead>
+                    <tr className="border-b-2 border-brand-gold/30">
+                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4 pr-8">Product</th>
+                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4 pr-8">Unit Size</th>
+                      <th className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-brand-ink/40 pb-4">Availability</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cat.products.map((product, pIdx) => (
+                      <tr key={pIdx} className="border-b border-brand-ink/5 hover:bg-brand-cream/50 transition-colors">
+                        <td className="py-4 pr-8 text-sm md:text-base font-medium text-brand-ink">{product.name}</td>
+                        <td className="py-4 pr-8 text-sm text-brand-ink/60">{product.unit}</td>
+                        <td className="py-4">
+                          <span className={cn(
+                            "text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full",
+                            product.availability === 'Year-Round'
+                              ? "bg-brand-green/10 text-brand-green"
+                              : "bg-brand-gold/10 text-brand-gold"
+                          )}>
+                            {product.availability}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-16 p-8 md:p-12 bg-brand-cream rounded-[2rem] border border-brand-ink/5 text-center">
+          <p className="text-brand-ink/60 text-sm md:text-base mb-6">
+            For current pricing and bulk order inquiries, contact us directly.
+          </p>
+          <a
+            href="mailto:stronson@stronachandosons.ca"
+            className="inline-flex items-center gap-3 bg-brand-gold text-brand-ink px-8 py-4 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-brand-ink hover:text-brand-cream transition-all"
+          >
+            Request Pricing
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -628,7 +833,10 @@ const LogisticsSection = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <MapPin className="text-brand-gold w-5 h-5 md:w-6 md:h-6" />
-                <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest">Ontario Food Terminal Hub</span>
+                <div>
+                  <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest block">Ontario Food Terminal Hub</span>
+                  <span className="text-[10px] md:text-xs text-brand-cream/50">33 Connell Ct, Etobicoke, ON M8Z 1E8</span>
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <Clock className="text-brand-gold w-5 h-5 md:w-6 md:h-6" />
@@ -667,12 +875,12 @@ const LogisticsSection = () => {
 
 const PartnersSection = () => {
   const brands = [
-    { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34' },
-    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059' },
-    { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414' },
-    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40' },
-    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34' },
-    { name: 'Sunkist', suffix: 'Growers', region: 'Global', desc: 'Excellence in Citrus Distribution', color: '#C5A059' }
+    { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34', url: 'https://littlebearproduce.com', logo: '🥬' },
+    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059', url: 'https://www.washingtonfruit.com', logo: '🍎' },
+    { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414', url: 'https://www.dole.com', logo: '🍌' },
+    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40', url: 'https://www.collinsfarms.ca', logo: '🥕' },
+    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34', url: 'https://www.salibafarms.com', logo: '🌿' },
+    { name: 'Art', suffix: 'Farms', region: 'Ontario', desc: 'Premium Ontario Fresh Produce', color: '#C5A059', url: 'https://www.artfarms.ca', logo: '🌾' }
   ];
 
   return (
@@ -706,42 +914,49 @@ const PartnersSection = () => {
               transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="group relative"
             >
-              <div className="relative p-12 md:p-16 h-full bg-brand-cream/50 rounded-[3rem] border border-brand-ink/5 overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(26,60,52,0.15)] hover:-translate-y-4">
-                {/* Background Pattern */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors duration-700" />
+              <a href={brand.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                <div className="relative p-12 md:p-16 h-full bg-brand-cream/50 rounded-[3rem] border border-brand-ink/5 overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(26,60,52,0.15)] hover:-translate-y-4">
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors duration-700" />
 
-                <div className="relative z-10 flex flex-col h-full justify-between gap-16">
-                  <div className="flex justify-between items-start">
-                    <div className="px-4 py-1.5 bg-white rounded-full border border-brand-ink/5 text-[9px] font-black uppercase tracking-widest text-brand-gold">
-                      {brand.region}
+                  <div className="relative z-10 flex flex-col h-full justify-between gap-16">
+                    <div className="flex justify-between items-start">
+                      <div className="px-4 py-1.5 bg-white rounded-full border border-brand-ink/5 text-[9px] font-black uppercase tracking-widest text-brand-gold">
+                        {brand.region}
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-brand-ink/5 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-500">
+                        <ArrowUpRight className="w-5 h-5 group-hover:text-white transition-colors" />
+                      </div>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-brand-ink/5 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-500">
-                      <ArrowUpRight className="w-5 h-5 group-hover:text-white transition-colors" />
+
+                    <div className="space-y-6">
+                      {/* Brand Logo */}
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border border-brand-ink/5 flex items-center justify-center text-3xl md:text-4xl shadow-sm">
+                        {brand.logo}
+                      </div>
+
+                      {/* Stylized Typographic Logo */}
+                      <div className="flex flex-col">
+                        <span className="text-4xl md:text-5xl font-serif text-brand-green leading-none tracking-tighter group-hover:italic transition-all duration-500">
+                          {brand.name}
+                        </span>
+                        <span className="text-xs uppercase tracking-[0.4em] font-black text-brand-gold/60 mt-2">
+                          {brand.suffix}
+                        </span>
+                      </div>
+
+                      <div className="h-px w-12 bg-brand-gold/30 group-hover:w-full transition-all duration-700" />
+
+                      <p className="text-brand-ink/40 text-sm leading-relaxed group-hover:text-brand-ink/60 transition-colors">
+                        {brand.desc}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="space-y-6">
-                    {/* Stylized Typographic Logo */}
-                    <div className="flex flex-col">
-                      <span className="text-4xl md:text-5xl font-serif text-brand-green leading-none tracking-tighter group-hover:italic transition-all duration-500">
-                        {brand.name}
-                      </span>
-                      <span className="text-xs uppercase tracking-[0.4em] font-black text-brand-gold/60 mt-2">
-                        {brand.suffix}
-                      </span>
-                    </div>
-
-                    <div className="h-px w-12 bg-brand-gold/30 group-hover:w-full transition-all duration-700" />
-
-                    <p className="text-brand-ink/40 text-sm leading-relaxed group-hover:text-brand-ink/60 transition-colors">
-                      {brand.desc}
-                    </p>
-                  </div>
+                  {/* Glassmorphism Hover Overlay */}
+                  <div className="absolute inset-0 bg-white/40 lg:backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
                 </div>
-
-                {/* Glassmorphism Hover Overlay */}
-                <div className="absolute inset-0 bg-white/40 lg:backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -846,6 +1061,7 @@ const HomePage = () => {
       <AboutSectionSnapshot />
       <HeritageTimeline />
       <ProduceGrid />
+      <WholesaleCatalog />
       <QualityLab />
       <LogisticsSection />
       <PartnersSection />

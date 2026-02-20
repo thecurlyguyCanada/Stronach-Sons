@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,6 +10,10 @@ export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
     const isHome = location.pathname === '/';
+
+    const scrollToTop = useCallback(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -32,13 +36,13 @@ export const Navbar = () => {
             isScrolled || !isHome ? "bg-brand-cream/95 backdrop-blur-md lg:backdrop-blur-xl py-4 border-b border-brand-ink/5" : "bg-brand-cream/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-brand-ink/5 lg:border-transparent"
         )}>
             <div className="max-w-[1800px] mx-auto flex justify-between items-center">
-                <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+                <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 group cursor-pointer">
                     <div className="w-10 h-10 bg-brand-green rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
                         <Leaf className="text-brand-cream w-6 h-6" />
                     </div>
                     <div className="flex flex-col leading-none">
                         <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green whitespace-nowrap">Stronach & Sons</span>
-                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Est. 2020</span>
+                        <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Ownership Changed 2020</span>
                     </div>
                 </Link>
 
@@ -47,6 +51,7 @@ export const Navbar = () => {
                         <Link
                             key={item.name}
                             to={item.path}
+                            onClick={item.path === '/' ? scrollToTop : undefined}
                             className={cn(
                                 "text-[11px] font-bold uppercase tracking-[0.2em] transition-colors relative group",
                                 isScrolled || !isHome ? "text-brand-ink" : "text-white"
@@ -108,7 +113,7 @@ export const Navbar = () => {
                                         <Link
                                             to={item.path}
                                             className="text-5xl font-serif italic hover:text-brand-gold transition-colors"
-                                            onClick={() => setIsMenuOpen(false)}
+                                            onClick={() => { setIsMenuOpen(false); if (item.path === '/') scrollToTop(); }}
                                         >
                                             {item.name}
                                         </Link>
@@ -120,8 +125,8 @@ export const Navbar = () => {
                                     © 2026 Stronach & Sons 2020
                                 </div>
                                 <div className="flex gap-4">
-                                    <Instagram className="w-5 h-5" />
-                                    <Linkedin className="w-5 h-5" />
+                                    <a href="https://www.instagram.com/stronachandsons" target="_blank" rel="noopener noreferrer"><Instagram className="w-5 h-5" /></a>
+                                    <a href="https://www.linkedin.com/company/stronach-and-sons" target="_blank" rel="noopener noreferrer"><Linkedin className="w-5 h-5" /></a>
                                 </div>
                             </div>
                         </motion.div>

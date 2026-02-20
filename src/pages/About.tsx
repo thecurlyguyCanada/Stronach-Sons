@@ -20,7 +20,7 @@ const AboutPage = () => {
                         >
                             <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6 md:mb-8 block">Our Foundation</span>
                             <h1 className="text-5xl md:text-8xl font-serif mb-8 md:mb-12 leading-[0.9] tracking-tighter">
-                                Quality & <span className="italic text-brand-olive">Horizon</span>.
+                                Stronach and <span className="italic text-brand-olive">Sons 2020</span>.
                             </h1>
                             <p className="text-brand-ink/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
                                 Established at the Ontario Food Terminal in 2020, Stronach & Sons 2020 is a leading wholesale produce supplier in Ontario, built on professional expertise and a commitment to excellence.
