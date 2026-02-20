@@ -89,7 +89,7 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile]);
 
-  const titleWords = ["Stronach", "and", "Sons", "2020"];
+  const titleWords = ["Stronach", "and", "Sons"];
 
   return (
     <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-brand-ink">
