@@ -41,7 +41,7 @@ export const Navbar = () => {
                         <Leaf className="text-brand-cream w-6 h-6" />
                     </div>
                     <div className="flex flex-col leading-none">
-                        <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green whitespace-nowrap">Stronach & Sons</span>
+                        <span className="font-serif text-2xl font-bold tracking-tighter text-brand-green whitespace-nowrap">Stronach and Sons 2020</span>
                         <span className="text-[8px] uppercase tracking-[0.3em] font-black text-brand-olive ml-1">Est. 1954</span>
                     </div>
                 </Link>
@@ -108,7 +108,7 @@ export const Navbar = () => {
                             style={{ backgroundColor: '#F5F2ED' }}
                         >
                             <div className="flex justify-between items-center">
-                                <span className="font-serif text-3xl font-bold text-brand-green">Stronach & Sons</span>
+                                <span className="font-serif text-3xl font-bold text-brand-green">Stronach and Sons 2020</span>
                                 <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-brand-ink text-brand-cream rounded-full">
                                     <X />
                                 </button>
@@ -147,7 +147,7 @@ export const Navbar = () => {
                             </div>
                             <div className="flex justify-between items-end">
                                 <div className="text-xs uppercase tracking-widest text-brand-ink/40">
-                                    © 2026 Stronach & Sons 2020
+                                    © 2026 Stronach and Sons 2020
                                 </div>
                                 <div className="flex gap-4">
                                     <a href="https://www.instagram.com/stronachandsons" target="_blank" rel="noopener noreferrer"><Instagram className="w-5 h-5" /></a>

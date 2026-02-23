@@ -89,7 +89,7 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile]);
 
-  const titleWords = ["Stronach", "and", "Sons"];
+  const titleWords = ["Stronach", "and", "Sons", "2020"];
 
   return (
     <section className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-brand-ink">
@@ -222,7 +222,7 @@ const Hero = () => {
           className="flex flex-col gap-8"
         >
           <div className="vertical-rl text-[10px] uppercase tracking-[0.5em] text-white/40 font-bold">
-            STRONACH & SONS 2020 — TORONTO, ON
+            STRONACH AND SONS 2020 — TORONTO, ON
           </div>
           <div className="w-px h-24 bg-gradient-to-b from-white/40 to-transparent mx-auto" />
         </motion.div>
@@ -261,7 +261,7 @@ const AboutSectionSnapshot = () => {
           </h2>
           <div className="space-y-8 text-brand-ink/70 text-base md:text-lg font-light leading-relaxed max-w-xl">
             <p>
-              Founded in 1954, Stronach & Sons is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company combines decades of heritage with modern expertise, strong relationships, and an uncompromising commitment to quality.
+              Founded in 1954, Stronach and Sons 2020 is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company combines decades of heritage with modern expertise, strong relationships, and an uncompromising commitment to quality.
             </p>
             <p>
               Quality is at the core of everything we do. As an established produce wholesaler in Ontario, we carefully source, inspect, and deliver fresh fruits and vegetables that meet the highest standards for freshness, consistency, and reliability.

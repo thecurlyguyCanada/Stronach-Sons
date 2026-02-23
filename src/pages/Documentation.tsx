@@ -61,7 +61,7 @@ const DocumentationPage = () => {
                                 <span className="italic text-brand-olive">Documentation</span>.
                             </h1>
                             <p className="text-brand-ink/60 text-lg md:text-xl font-light leading-relaxed">
-                                Professional resources for developers, partners, and technical integrators working with the Stronach & Sons 2020 lead management architecture.
+                                Professional resources for developers, partners, and technical integrators working with the Stronach and Sons 2020 lead management architecture.
                             </p>
                         </motion.div>
 
