@@ -12,7 +12,7 @@ export const Footer = () => {
                             <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-green rounded-full flex items-center justify-center">
                                 <Leaf className="text-brand-cream w-6 h-6 md:w-7 md:h-7" />
                             </div>
-                            <span className="font-serif text-3xl md:text-4xl font-bold tracking-tighter">Stronach & Sons</span>
+                            <span className="font-serif text-3xl md:text-4xl font-bold tracking-tighter">Stronach and Sons 2020</span>
                         </div>
                         <h3 className="text-2xl md:text-5xl font-serif italic mb-10 md:mb-12 leading-tight max-w-md">
                             Expertise and <br />
@@ -74,7 +74,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-brand-cream/20">
-                    <div>© 2026 Stronach & Sons 2020. All Rights Reserved.</div>
+                    <div>© 2026 Stronach and Sons 2020. All Rights Reserved.</div>
                     <div className="flex gap-12">
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

@@ -23,7 +23,7 @@ const AboutPage = () => {
                                 Stronach and <span className="italic text-brand-olive">Sons 2020</span>.
                             </h1>
                             <p className="text-brand-ink/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                                Founded in 1954 at the Ontario Food Terminal, Stronach & Sons is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company is built on over 70 years of expertise and a renewed commitment to excellence.
+                                Founded in 1954 at the Ontario Food Terminal, Stronach and Sons 2020 is a leading wholesale produce supplier in Ontario. Under new ownership since 2020, the company is built on over 70 years of expertise and a renewed commitment to excellence.
                             </p>
                         </motion.div>
 
@@ -93,7 +93,7 @@ const AboutPage = () => {
                                     <div className="relative z-10">
                                         <h2 className="text-2xl md:text-3xl font-serif mb-6">Future-Focused Growth</h2>
                                         <p className="text-brand-cream/70 text-base md:text-lg leading-relaxed font-light">
-                                            Looking ahead, Stronach & Sons 2020 is focused on intentional, sustainable growth. We are expanding our customer and vendor portfolio with partners who share our dedication to quality, accountability, and long-term success. By aligning with the right people, we continue to strengthen a scalable foundation that allows us to deliver top-tier wholesale produce reliably - today and for years to come.
+                                            Looking ahead, Stronach and Sons 2020 is focused on intentional, sustainable growth. We are expanding our customer and vendor portfolio with partners who share our dedication to quality, accountability, and long-term success. By aligning with the right people, we continue to strengthen a scalable foundation that allows us to deliver top-tier wholesale produce reliably - today and for years to come.
                                         </p>
                                     </div>
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full -mr-16 -mt-16 blur-3xl" />
