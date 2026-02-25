@@ -60,8 +60,7 @@ export const Footer = () => {
                                 <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
                                     <p>33 Connell Ct, Etobicoke</p>
                                     <p>ON M8Z 1E8</p>
-                                    <p className="pt-2 text-brand-cream/60">Tel. (905) 677-2885</p>
-                                    <p className="text-brand-cream/60">Tel. (416) 259-5009</p>
+                                    <p className="pt-2 text-brand-cream/60">Tel. (416) 259-5009</p>
                                 </address>
                             </div>
                             <div>
