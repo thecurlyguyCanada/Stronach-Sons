@@ -131,7 +131,6 @@ const LocationsSection = () => {
       name: 'Ontario Food Terminal',
       address: '165 The Queensway, Suite #237, Toronto.',
       postal: 'ON M8Y 1H8',
-      tel: '(416) 259-5410',
     },
   ];
 
@@ -160,9 +159,11 @@ const LocationsSection = () => {
               <p className="text-sm text-brand-ink/70">
                 {loc.postal}
               </p>
-              <p className="text-sm text-brand-ink/70">
-                Tel. {loc.tel}
-              </p>
+              {loc.tel && (
+                <p className="text-sm text-brand-ink/70">
+                  Tel. {loc.tel}
+                </p>
+              )}
               {loc.tel2 && (
                 <p className="text-sm text-brand-ink/70">
                   Tel. {loc.tel2}
