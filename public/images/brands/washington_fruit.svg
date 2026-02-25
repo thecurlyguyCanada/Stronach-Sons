@@ -1,28 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
   <defs>
-    <linearGradient id="bellGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e5799;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0d2f5e;stop-opacity:1" />
+    <linearGradient id="bellBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8bcc0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8a9099;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b7280;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a9e2f;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2d6e1e;stop-opacity:1" />
+    <linearGradient id="bellHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d1d5db;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#d1d5db;stop-opacity:0.1" />
     </linearGradient>
   </defs>
-  <!-- Background -->
-  <rect width="400" height="200" fill="#ffffff" rx="8"/>
-  <!-- Bell shape (iconic Washington apple/bell shape) -->
-  <path d="M 120,45 C 120,45 105,42 100,50 C 95,58 100,65 100,65 L 90,90 C 85,105 80,120 85,130 C 90,145 105,155 120,155 C 135,155 150,145 155,130 C 160,120 155,105 150,90 L 140,65 C 140,65 145,58 140,50 C 135,42 120,45 120,45 Z" fill="url(#bellGrad)" stroke="#0d2f5e" stroke-width="1"/>
-  <!-- Leaf -->
-  <path d="M 120,45 C 120,45 130,25 145,30 C 145,30 135,35 130,45" fill="url(#leafGrad)" stroke="#2d6e1e" stroke-width="0.5"/>
-  <!-- Stem -->
-  <line x1="120" y1="45" x2="120" y2="32" stroke="#5a3e1b" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Liberty Bell - simplified illustration -->
+  <g transform="translate(300, 200)" opacity="0.25">
+    <!-- Bell yoke/crown -->
+    <rect x="-70" y="-155" width="140" height="22" rx="3" fill="#8a9099" stroke="#6b7280" stroke-width="1.5"/>
+    <rect x="-50" y="-170" width="100" height="18" rx="3" fill="#9ca3af" stroke="#6b7280" stroke-width="1.5"/>
+    <!-- Yoke bolts -->
+    <circle cx="-40" cy="-144" r="4" fill="#6b7280"/>
+    <circle cx="40" cy="-144" r="4" fill="#6b7280"/>
+    <circle cx="0" cy="-144" r="4" fill="#6b7280"/>
+    <!-- Yoke arms -->
+    <rect x="-85" y="-145" width="20" height="50" rx="4" fill="#9ca3af" stroke="#6b7280" stroke-width="1.5" transform="rotate(-8, -75, -120)"/>
+    <rect x="65" y="-145" width="20" height="50" rx="4" fill="#9ca3af" stroke="#6b7280" stroke-width="1.5" transform="rotate(8, 75, -120)"/>
+
+    <!-- Bell body -->
+    <path d="M -55,-130 C -55,-130 -65,-60 -75,0 C -85,60 -100,100 -110,130 C -115,145 -105,160 -90,160 L 90,160 C 105,160 115,145 110,130 C 100,100 85,60 75,0 C 65,-60 55,-130 55,-130 Z"
+          fill="url(#bellBody)" stroke="#6b7280" stroke-width="2"/>
+
+    <!-- Bell highlight -->
+    <path d="M -30,-125 C -30,-125 -40,-60 -45,0 C -50,50 -30,100 -20,130 C -15,140 15,140 20,130 C 30,100 50,50 45,0 C 40,-60 30,-125 30,-125 Z"
+          fill="url(#bellHighlight)" opacity="0.4"/>
+
+    <!-- Bell lip/rim -->
+    <ellipse cx="0" cy="160" rx="110" ry="12" fill="#7a8290" stroke="#6b7280" stroke-width="1.5"/>
+
+    <!-- Crack line -->
+    <path d="M 5,-80 L 8,-50 L 3,-20 L 7,10 L 4,40 L 8,70 L 5,100 L 9,130 L 6,155"
+          fill="none" stroke="#4b5563" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Clapper -->
+    <line x1="0" y1="-100" x2="0" y2="130" stroke="#6b7280" stroke-width="3"/>
+    <circle cx="0" cy="135" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="1.5"/>
+  </g>
+
   <!-- Text: WASHINGTON -->
-  <text x="200" y="82" font-family="'Georgia', 'Times New Roman', serif" font-size="22" font-weight="bold" fill="#1e5799" text-anchor="start" letter-spacing="3">WASHINGTON</text>
-  <!-- Text: FRUIT -->
-  <text x="200" y="115" font-family="'Georgia', 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#0d2f5e" text-anchor="start" letter-spacing="5">FRUIT</text>
-  <!-- Tagline -->
-  <text x="200" y="140" font-family="'Arial', 'Helvetica', sans-serif" font-size="10" fill="#6688aa" text-anchor="start" letter-spacing="2">PREMIUM QUALITY PRODUCE</text>
-  <!-- Decorative line -->
-  <line x1="200" y1="148" x2="360" y2="148" stroke="#1e5799" stroke-width="1" opacity="0.4"/>
+  <text x="300" y="340" font-family="'Georgia', 'Times New Roman', serif" font-size="72" font-weight="bold" fill="#3d7b3f" text-anchor="middle" letter-spacing="6">WASHINGTON</text>
+
+  <!-- Divider line -->
+  <line x1="95" y1="360" x2="505" y2="360" stroke="#1e3a5f" stroke-width="3"/>
+
+  <!-- Text: FRUIT GROWERS -->
+  <text x="300" y="400" font-family="'Georgia', 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#1e3a5f" text-anchor="middle" letter-spacing="5">FRUIT GROWERS</text>
+
+  <!-- TM symbol -->
+  <text x="520" y="385" font-family="'Arial', 'Helvetica', sans-serif" font-size="14" fill="#1e3a5f">&#8482;</text>
 </svg>

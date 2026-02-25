@@ -45,11 +45,11 @@ export const Footer = () => {
                                 <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Brands</h5>
                                 <ul className="space-y-4 md:space-y-6 text-[13px] md:text-sm font-medium text-brand-cream/40">
                                     <li><a href="https://littlebearproduce.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Little Bear</a></li>
-                                    <li><a href="https://www.washingtonfruit.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Washington Fruit</a></li>
+                                    <li><a href="https://washfruitgrowers.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Washington Fruit</a></li>
                                     <li><a href="https://www.dole.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dole</a></li>
-                                    <li><a href="https://www.collinsfarms.ca" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Collins Farms</a></li>
-                                    <li><a href="https://www.salibafarms.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Saliba Farms</a></li>
-                                    <li><a href="https://www.artfarms.ca" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Art Farms</a></li>
+                                    <li><a href="https://www.collins-farm.ca/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Collins Farms</a></li>
+                                    <li><a href="https://www.facebook.com/salibagreenhouses/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Saliba Farms</a></li>
+                                    <li><a href="https://art-farm.ca/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Art Farms</a></li>
                                 </ul>
                             </div>
                         </div>
