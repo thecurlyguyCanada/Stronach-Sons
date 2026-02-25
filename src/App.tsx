@@ -832,6 +832,60 @@ const TeamSection = () => {
   );
 };
 
+const LocationsSection = () => {
+  const locations = [
+    {
+      label: 'Location 1',
+      name: 'Evans Ave. Warehouse',
+      address: '191 Evans Ave., Etobicoke, ON.',
+      postal: 'ON M8Z 1J5',
+      tel: '(905) 677-2885',
+    },
+    {
+      label: 'Location 2',
+      name: 'Ontario Food Terminal',
+      address: '165 The Queensway, Suite #237, Toronto.',
+      postal: 'ON M8Y 1H8',
+      tel: '(416) 259-5410',
+    },
+  ];
+
+  return (
+    <section id="locations" className="py-24 md:py-32 bg-[#e5e5e0] relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+          {locations.map((loc, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center space-y-6"
+            >
+              <h3 className="text-2xl font-serif font-bold text-brand-ink tracking-tight">
+                {loc.label}
+              </h3>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-brand-ink/60">
+                {loc.name}
+              </p>
+              <p className="text-sm text-brand-ink/70 leading-relaxed">
+                {loc.address}
+              </p>
+              <p className="text-sm text-brand-ink/70">
+                {loc.postal}
+              </p>
+              <p className="text-sm text-brand-ink/70">
+                Tel. {loc.tel}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const CommitmentSection = () => {
   return (
     <section className="py-20 md:py-32 bg-brand-ink text-brand-cream overflow-hidden">
@@ -933,6 +987,7 @@ const HomePage = () => {
       <PartnersSection />
       <TeamSection />
       <CommitmentSection />
+      <LocationsSection />
 
       {/* Final Premium CTA Section */}
       <section className="py-24 md:py-48 px-6 md:px-12 bg-brand-green relative overflow-hidden group">

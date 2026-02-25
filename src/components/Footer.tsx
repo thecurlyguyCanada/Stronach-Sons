@@ -58,7 +58,7 @@ export const Footer = () => {
                             <p className="text-[13px] md:text-sm text-brand-cream/40 mb-4 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
                             <p className="text-[13px] md:text-sm text-brand-cream/40 mb-8 leading-relaxed">
                                 <span className="text-brand-cream/60 font-bold">Warehouse:</span><br />
-                                33 Connell Ct, Etobicoke, ON M8Z 1E8
+                                191 Evans Ave., Etobicoke, ON M8Z 1J5
                             </p>
                             <a
                                 href="mailto:stronson@stronachandosons.ca"
