@@ -53,23 +53,34 @@ export const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-span-1 lg:col-span-1">
-                            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Inquiries</h5>
-                            <p className="text-[13px] md:text-sm text-brand-cream/40 mb-4 leading-relaxed">Partner with a leader at the Ontario Food Terminal.</p>
-                            <p className="text-[13px] md:text-sm text-brand-cream/40 mb-8 leading-relaxed">
-                                <span className="text-brand-cream/60 font-bold">Warehouses:</span><br />
-                                33 Connell Ct, Etobicoke, ON M8Z 1E8<br />
-                                191 Evans Ave., Etobicoke, ON M8Z 1J5
-                            </p>
-                            <a
-                                href="mailto:stronson@stronachandosons.ca"
-                                className="inline-flex group items-center gap-4 text-sm font-bold uppercase tracking-widest text-white hover:text-brand-gold transition-colors"
-                            >
-                                Send Message
-                                <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-gold transition-colors">
-                                    <ArrowRight className="w-4 h-4" />
-                                </span>
-                            </a>
+                        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-12">
+                            <div>
+                                <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Location 1</h5>
+                                <p className="text-[12px] font-bold uppercase tracking-widest text-brand-cream/60 mb-2">Evans Ave. Warehouse</p>
+                                <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
+                                    <p>33 Connell Ct, Etobicoke</p>
+                                    <p>ON M8Z 1E8</p>
+                                    <p className="pt-2 text-brand-cream/60">Tel. (905) 677-2885</p>
+                                </address>
+                            </div>
+                            <div>
+                                <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Location 2</h5>
+                                <p className="text-[12px] font-bold uppercase tracking-widest text-brand-cream/60 mb-2">Ontario Food Terminal</p>
+                                <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
+                                    <p>165 The Queensway, Suite #237</p>
+                                    <p>Toronto, ON M8Y 1H8</p>
+                                    <p className="pt-2 text-brand-cream/60">Tel. (416) 259-5410</p>
+                                </address>
+                                <a
+                                    href="mailto:stronson@stronachandosons.ca"
+                                    className="inline-flex group items-center gap-4 text-[10px] font-black uppercase tracking-widest text-white hover:text-brand-gold transition-colors mt-4"
+                                >
+                                    Inquiries
+                                    <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-gold transition-colors">
+                                        <ArrowRight className="w-3 h-3" />
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
