@@ -403,35 +403,35 @@ const ProduceGrid = () => {
     {
       title: 'Apples & Cherries',
       desc: 'Premium hand-selected apples and cherries sourced from top North American orchards for peak freshness and flavor.',
-      img: '/images/citrus_heirloom.png',
+      img: 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?auto=format&fit=crop&q=80&w=1200',
       tag: 'Seasonal',
       size: 'large'
     },
     {
       title: 'Leafy Greens',
       desc: 'Fresh lettuce, spinach, kale, and mixed greens delivered daily for maximum crispness.',
-      img: '/images/greens_leafy.png',
+      img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=1200',
       tag: 'Daily',
       size: 'small'
     },
     {
       title: 'Mix Vegetables',
       desc: 'Curated selection of fresh mixed vegetables for restaurants and retail partners.',
-      img: '/images/roots_organic.png',
+      img: 'https://images.unsplash.com/photo-1597362860722-3955536ad2c6?auto=format&fit=crop&q=80&w=1200',
       tag: 'Core',
       size: 'small'
     },
     {
       title: 'Onions',
       desc: 'Ontario-grown and imported onions — red, yellow, white, and sweet varieties available year-round.',
-      img: '/images/berries_exotic.png',
+      img: 'https://images.unsplash.com/photo-1580201006863-1d2be17e7918?auto=format&fit=crop&q=80&w=1200',
       tag: 'Year-Round',
       size: 'large'
     },
     {
       title: 'Zucchini & Squash',
       desc: 'Fresh zucchini and squash varieties sourced from local growers and premium suppliers.',
-      img: '/images/about_wholesale_produce.png',
+      img: 'https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&q=80&w=1200',
       tag: 'Seasonal',
       size: 'small'
     }
