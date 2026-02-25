@@ -24,9 +24,10 @@ export const Navbar = () => {
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
-        { name: 'Produce', path: '/#produce' },
-        { name: 'Partners', path: '/#partners' },
-        { name: 'Logistics', path: '/#logistics' }
+        { name: 'Produce', path: '/produce' },
+        { name: 'Partners', path: '/partners' },
+        { name: 'Team', path: '/team' },
+        { name: 'Logistics', path: '/logistics' }
     ];
 
     return (

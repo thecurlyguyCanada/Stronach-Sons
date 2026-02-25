@@ -36,8 +36,8 @@ export const Footer = () => {
                                 <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Company</h5>
                                 <ul className="space-y-4 md:space-y-6 text-[13px] md:text-sm font-medium text-brand-cream/40">
                                     <li><Link to="/about" className="hover:text-white transition-colors">Our Legacy</Link></li>
-                                    <li><Link to="/documentation" className="hover:text-white transition-colors">Documentation</Link></li>
-                                    <li><Link to="/#partners" className="hover:text-white transition-colors">Partnerships</Link></li>
+                                    <li><Link to="/team" className="hover:text-white transition-colors">Our Team</Link></li>
+                                    <li><Link to="/partners" className="hover:text-white transition-colors">Partnerships</Link></li>
                                     <li><a href="mailto:stronson@stronachandosons.ca" className="hover:text-white transition-colors">Contact</a></li>
                                 </ul>
                             </div>
@@ -49,7 +49,7 @@ export const Footer = () => {
                                     <li><a href="https://www.dole.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dole</a></li>
                                     <li><a href="https://www.collins-farm.ca/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Collins Farms</a></li>
                                     <li><a href="https://www.facebook.com/salibagreenhouses/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Saliba Farms</a></li>
-                                    <li><a href="https://art-farm.ca/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Art Farms</a></li>
+                                    <li><a href="https://www.welshbros.ca/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Welsh Bros</a></li>
                                 </ul>
                             </div>
                         </div>
