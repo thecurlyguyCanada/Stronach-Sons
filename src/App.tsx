@@ -21,6 +21,7 @@ import {
 import { cn } from './lib/utils';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { MembershipBanner } from './components/MembershipBanner';
 import AboutPage from './pages/About';
 import DocumentationPage from './pages/Documentation';
 import ProducePage from './pages/Produce';
@@ -518,6 +519,7 @@ export default function App() {
           <Route path="/documentation" element={<DocumentationPage />} />
         </Routes>
       </main>
+      <MembershipBanner />
       <Footer />
     </div>
   );
