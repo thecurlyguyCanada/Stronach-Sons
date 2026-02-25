@@ -673,11 +673,11 @@ const LogisticsSection = () => {
 const PartnersSection = () => {
   const brands = [
     { name: 'Little Bear', suffix: 'Produce', region: 'California', desc: 'Premium North American Greens', color: '#1A3C34', url: 'https://littlebearproduce.com', logo: '/images/brands/little_bear.png' },
-    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059', url: 'https://www.washingtonfruit.com', logo: '/images/brands/washington_fruit.svg' },
+    { name: 'Washington', suffix: 'Fruit', region: 'Washington', desc: 'Industry Standard for Pomes', color: '#C5A059', url: 'https://washfruitgrowers.com/', logo: '/images/brands/washington_fruit.svg' },
     { name: 'Dole', suffix: 'Fresh', region: 'California', desc: 'Global Excellence in Vegetables', color: '#141414', url: 'https://www.dole.com', logo: '/images/brands/dole.png' },
-    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Professional Ontario Root Crops', color: '#5A5A40', url: 'https://www.collinsfarms.ca', logo: '/images/brands/collins_farms.svg' },
-    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34', url: 'https://www.salibafarms.com', logo: '/images/brands/saliba_farms.svg' },
-    { name: 'Art', suffix: 'Farms', region: 'Ontario', desc: 'Premium Ontario Fresh Produce', color: '#C5A059', url: 'https://www.artfarms.ca', logo: '/images/brands/art_farms.jpg' }
+    { name: 'Collins', suffix: 'Farms', region: 'Ontario', desc: 'Canada Premium Grower', color: '#5A5A40', url: 'https://www.collins-farm.ca/', logo: '/images/brands/collins_farms.svg' },
+    { name: 'Saliba', suffix: 'Farms', region: 'Ontario', desc: 'Quality Local Ontario Growers', color: '#1A3C34', url: 'https://www.facebook.com/salibagreenhouses/', logo: '/images/brands/saliba_farms.svg' },
+    { name: 'Art', suffix: 'Farms', region: 'Ontario', desc: 'Premium Ontario Fresh Produce', color: '#C5A059', url: 'https://art-farm.ca/', logo: '/images/brands/art_farms.jpg' }
   ];
 
   return (
@@ -754,6 +754,130 @@ const PartnersSection = () => {
                   <div className="absolute inset-0 bg-white/40 lg:backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
                 </div>
               </a>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TeamSection = () => {
+  const team = [
+    { name: 'Tony Morano', role: 'Head of Operations' },
+    { name: 'Joe Scali', role: 'Procurement & Sales' },
+    { name: 'Jonathan Morano', role: 'Procurement & Sales' },
+  ];
+
+  return (
+    <section id="team" className="py-24 md:py-48 bg-brand-cream relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-brand-gold/5 skew-x-12 -translate-x-1/4 pointer-events-none" />
+
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-24 md:mb-40 gap-16">
+          <div className="max-w-4xl">
+            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black mb-8 block">Our Team</span>
+            <h2 className="text-6xl md:text-[10vw] font-serif leading-[0.8] tracking-tighter">
+              The People <br />
+              <span className="italic text-brand-olive">Behind the Promise</span>
+            </h2>
+          </div>
+          <div className="max-w-xs lg:pb-8">
+            <p className="text-brand-ink/50 text-sm md:text-base leading-relaxed italic">
+              "Experienced professionals dedicated to delivering excellence at the Ontario Food Terminal."
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          {team.map((member, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative"
+            >
+              <div className="relative p-12 md:p-16 bg-white rounded-[3rem] border border-brand-ink/5 overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(26,60,52,0.15)] hover:-translate-y-4">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors duration-700" />
+
+                <div className="relative z-10 flex flex-col gap-8">
+                  <div className="w-20 h-20 rounded-full bg-brand-green flex items-center justify-center">
+                    <span className="text-brand-cream font-serif text-2xl italic">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    <span className="text-3xl md:text-4xl font-serif text-brand-green leading-none tracking-tighter group-hover:italic transition-all duration-500">
+                      {member.name}
+                    </span>
+
+                    <div className="h-px w-12 bg-brand-gold/30 group-hover:w-full transition-all duration-700" />
+
+                    <div className="px-4 py-1.5 bg-brand-cream rounded-full border border-brand-ink/5 text-[9px] font-black uppercase tracking-widest text-brand-gold inline-block">
+                      {member.role}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 bg-white/40 lg:backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const LocationsSection = () => {
+  const locations = [
+    {
+      label: 'Location 1',
+      name: 'Evans Ave. Warehouse',
+      address: '191 Evans Ave., Etobicoke, ON.',
+      postal: 'ON M8Z 1J5',
+      tel: '(905) 677-2885',
+    },
+    {
+      label: 'Location 2',
+      name: 'Ontario Food Terminal',
+      address: '165 The Queensway, Suite #237, Toronto.',
+      postal: 'ON M8Y 1H8',
+      tel: '(416) 259-5410',
+    },
+  ];
+
+  return (
+    <section id="locations" className="py-24 md:py-32 bg-[#e5e5e0] relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+          {locations.map((loc, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center space-y-6"
+            >
+              <h3 className="text-2xl font-serif font-bold text-brand-ink tracking-tight">
+                {loc.label}
+              </h3>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-brand-ink/60">
+                {loc.name}
+              </p>
+              <p className="text-sm text-brand-ink/70 leading-relaxed">
+                {loc.address}
+              </p>
+              <p className="text-sm text-brand-ink/70">
+                {loc.postal}
+              </p>
+              <p className="text-sm text-brand-ink/70">
+                Tel. {loc.tel}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -861,7 +985,9 @@ const HomePage = () => {
       <QualityLab />
       <LogisticsSection />
       <PartnersSection />
+      <TeamSection />
       <CommitmentSection />
+      <LocationsSection />
 
       {/* Final Premium CTA Section */}
       <section className="py-24 md:py-48 px-6 md:px-12 bg-brand-green relative overflow-hidden group">
