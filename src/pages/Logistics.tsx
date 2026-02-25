@@ -124,6 +124,7 @@ const LocationsSection = () => {
       address: '33 Connell Ct, Etobicoke, ON M8Z 1E8',
       postal: 'ON M8Z 1E8',
       tel: '(905) 677-2885',
+      tel2: '(416) 259-5009',
     },
     {
       label: 'Location 2',
@@ -162,6 +163,11 @@ const LocationsSection = () => {
               <p className="text-sm text-brand-ink/70">
                 Tel. {loc.tel}
               </p>
+              {loc.tel2 && (
+                <p className="text-sm text-brand-ink/70">
+                  Tel. {loc.tel2}
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
