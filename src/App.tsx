@@ -417,7 +417,7 @@ const ProduceGrid = () => {
     {
       title: 'Mix Vegetables',
       desc: 'Curated selection of fresh mixed vegetables for restaurants and retail partners.',
-      img: '/images/mix_veggies_user.png',
+      img: '/images/mix_veggies_user.jpg',
       tag: 'Core',
       size: 'small'
     },
