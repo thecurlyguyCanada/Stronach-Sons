@@ -837,8 +837,8 @@ const LocationsSection = () => {
     {
       label: 'Location 1',
       name: 'Evans Ave. Warehouse',
-      address: '191 Evans Ave., Etobicoke, ON.',
-      postal: 'ON M8Z 1J5',
+      address: '33 Connell Ct, Etobicoke, ON M8Z 1E8',
+      postal: 'ON M8Z 1E8',
       tel: '(905) 677-2885',
     },
     {
