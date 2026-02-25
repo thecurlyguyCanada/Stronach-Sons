@@ -10,14 +10,12 @@ const memberships = [
 
 export const MembershipBanner = () => {
   return (
-    <section className="bg-brand-ink relative overflow-hidden">
-      {/* Header bar */}
-      <div className="border-b border-white/5">
-        <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-6">
-          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-black">
-            Proud Member Of
-          </span>
-        </div>
+    <section className="bg-white relative overflow-hidden border-t border-brand-ink/5">
+      {/* Header */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-4">
+        <h3 className="text-3xl md:text-5xl font-serif text-brand-green tracking-tighter text-center">
+          Proud <span className="italic text-brand-olive">Member Of</span>
+        </h3>
       </div>
 
       {/* Logos */}
@@ -35,13 +33,11 @@ export const MembershipBanner = () => {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               className="group flex items-center justify-center"
             >
-              <div className="h-16 md:h-20 w-auto flex items-center justify-center rounded-xl bg-white/5 border border-white/5 px-6 py-3 hover:bg-white/10 hover:border-white/10 transition-all duration-500">
-                <img
-                  src={member.logo}
-                  alt={`${member.name} membership`}
-                  className="h-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                />
-              </div>
+              <img
+                src={member.logo}
+                alt={`${member.name} membership`}
+                className="h-16 md:h-24 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+              />
             </motion.a>
           ))}
         </div>
