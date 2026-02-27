@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { useDocumentHead } from './hooks/useDocumentHead';
 import {
   Leaf,
   ArrowUpRight,
@@ -110,7 +111,7 @@ const Hero = () => {
         >
           <img
             src="/images/hero_ontario_terminal.png"
-            alt="Ontario Food Terminal"
+            alt="Ontario Food Terminal wholesale produce market in Toronto"
             className="w-full h-full object-cover brightness-[0.4] scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-cream" />
@@ -440,6 +441,12 @@ const FloatingAssets = () => {
 };
 
 const HomePage = () => {
+  useDocumentHead({
+    title: 'Premium Wholesale Produce Ontario',
+    description: 'Stronach and Sons 2020 is a leading wholesale produce supplier at the Ontario Food Terminal in Toronto. Fresh fruits and vegetables for restaurants, retailers, and foodservice since 1954.',
+    canonical: '/',
+  });
+
   return (
     <div className="relative overflow-hidden">
       <FloatingAssets />
@@ -454,7 +461,7 @@ const HomePage = () => {
           <img
             src="/images/cta_background.png"
             className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[5s]"
-            alt="Estate Background"
+            alt="Wholesale produce distribution facility"
             loading="lazy"
           />
         </div>

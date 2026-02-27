@@ -1,0 +1,6 @@
+# Stronach and Sons 2020 - robots.txt
+User-agent: *
+Allow: /
+Disallow: /documentation
+
+Sitemap: https://stronachandsons.ca/sitemap.xml

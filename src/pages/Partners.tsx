@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const PartnersSection = () => {
   const brands = [
@@ -105,6 +106,12 @@ const PartnersSection = () => {
 };
 
 const PartnersPage = () => {
+  useDocumentHead({
+    title: 'Our Partners',
+    description: 'Stronach and Sons 2020 partners with top producers including Little Bear Produce, Washington Fruit, Dole, Collins Farms, Saliba Farms, and Welsh Bros for premium wholesale produce.',
+    canonical: '/partners',
+  });
+
   return (
     <div className="min-h-screen bg-brand-cream pt-24 lg:pt-32">
       <PartnersSection />
