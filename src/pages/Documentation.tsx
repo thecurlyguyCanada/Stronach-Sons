@@ -14,8 +14,14 @@ import {
 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const DocumentationPage = () => {
+    useDocumentHead({
+        title: 'Documentation',
+        description: 'Technical documentation and developer resources for Stronach and Sons 2020 integrations and partnerships.',
+        canonical: '/documentation',
+    });
     const resources = [
         {
             category: 'Official Documentation',

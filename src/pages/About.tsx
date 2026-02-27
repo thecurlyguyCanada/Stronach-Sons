@@ -3,8 +3,15 @@ import { motion } from 'motion/react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { Leaf, Award, Globe, Heart } from 'lucide-react';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const AboutPage = () => {
+    useDocumentHead({
+        title: 'About Us',
+        description: 'Learn about Stronach and Sons 2020, a wholesale produce supplier founded in 1954 at the Ontario Food Terminal. Over 70 years of expertise in fresh fruits and vegetables distribution.',
+        canonical: '/about',
+    });
+
     return (
         <div className="min-h-screen bg-brand-cream">
             <Navbar />
@@ -36,7 +43,7 @@ const AboutPage = () => {
                             <div className="mask-oval aspect-square overflow-hidden bg-brand-ink shadow-2xl">
                                 <img
                                     src="/images/about_wholesale_produce.png"
-                                    alt="Legacy Produce"
+                                    alt="Fresh wholesale produce sourced by Stronach and Sons 2020"
                                     loading="lazy"
                                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                                 />

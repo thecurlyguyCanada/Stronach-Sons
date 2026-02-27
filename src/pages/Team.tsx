@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone } from 'lucide-react';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const TeamSection = () => {
   const team = [
@@ -87,6 +88,12 @@ const TeamSection = () => {
 };
 
 const TeamPage = () => {
+  useDocumentHead({
+    title: 'Our Team',
+    description: 'Meet the Stronach and Sons 2020 team. Experienced professionals in procurement, sales, and operations at the Ontario Food Terminal.',
+    canonical: '/team',
+  });
+
   return (
     <div className="min-h-screen bg-brand-cream pt-24 lg:pt-32">
       <TeamSection />

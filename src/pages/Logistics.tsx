@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Clock } from 'lucide-react';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const LogisticsSection = () => {
   return (
@@ -9,7 +10,7 @@ const LogisticsSection = () => {
         <img
           src="/images/logistics_terminal.png"
           className="w-full h-full object-cover"
-          alt="Logistics"
+          alt="Ontario Food Terminal logistics and produce distribution hub"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-green via-transparent to-transparent" />
@@ -100,7 +101,7 @@ const CommitmentSection = () => {
             <div className="aspect-[4/3] rounded-[3rem] md:rounded-[4rem] overflow-hidden">
               <img
                 src="/images/about_wholesale_produce.png"
-                alt="Quality Inspection"
+                alt="Wholesale produce quality inspection at Ontario Food Terminal"
                 loading="lazy"
                 className="w-full h-full object-cover brightness-75 grayscale hover:grayscale-0 transition-all duration-1000"
               />
@@ -178,6 +179,12 @@ const LocationsSection = () => {
 };
 
 const LogisticsPage = () => {
+  useDocumentHead({
+    title: 'Logistics & Distribution',
+    description: 'Stronach and Sons 2020 logistics and distribution from the Ontario Food Terminal. Cold-chain integrity, 24/7 terminal presence, and locations in Etobicoke and Toronto.',
+    canonical: '/logistics',
+  });
+
   return (
     <div className="min-h-screen bg-brand-cream pt-24 lg:pt-32">
       <LogisticsSection />

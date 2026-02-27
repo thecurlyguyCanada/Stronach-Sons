@@ -8,6 +8,7 @@ import {
   History,
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useDocumentHead } from '../hooks/useDocumentHead';
 
 const ProduceGrid = () => {
   const categories = [
@@ -15,6 +16,7 @@ const ProduceGrid = () => {
       title: 'Apples & Cherries',
       desc: 'Premium hand-selected apples and cherries sourced from top North American orchards for peak freshness and flavor.',
       img: '/images/apples_cherries_user.jpg',
+      alt: 'Wholesale fresh apples and cherries from North American orchards',
       tag: 'Seasonal',
       size: 'large'
     },
@@ -22,6 +24,7 @@ const ProduceGrid = () => {
       title: 'Leafy Greens',
       desc: 'Fresh lettuce, spinach, kale, and mixed greens delivered daily for maximum crispness.',
       img: '/images/leafy_greens_user.jpg',
+      alt: 'Fresh wholesale leafy greens including lettuce, spinach, and kale',
       tag: 'Daily',
       size: 'small'
     },
@@ -29,6 +32,7 @@ const ProduceGrid = () => {
       title: 'Mix Vegetables',
       desc: 'Curated selection of fresh mixed vegetables for restaurants and retail partners.',
       img: '/images/mix_veggies_user.jpg',
+      alt: 'Wholesale mixed vegetables for restaurants and retailers',
       tag: 'Core',
       size: 'small'
     },
@@ -36,6 +40,7 @@ const ProduceGrid = () => {
       title: 'Onions',
       desc: 'Ontario-grown and imported onions — red, yellow, white, and sweet varieties available year-round.',
       img: '/images/onions_user.jpg',
+      alt: 'Ontario-grown wholesale onions in red, yellow, and white varieties',
       tag: 'Year-Round',
       size: 'large'
     },
@@ -43,6 +48,7 @@ const ProduceGrid = () => {
       title: 'Zucchini & Squash',
       desc: 'Fresh zucchini and squash varieties sourced from local growers and premium suppliers.',
       img: '/images/zucchini_squash_user.png',
+      alt: 'Fresh wholesale zucchini and squash from local Ontario growers',
       tag: 'Seasonal',
       size: 'small'
     }
@@ -99,7 +105,7 @@ const ProduceGrid = () => {
         >
           <img
             src={cat.img}
-            alt={cat.title}
+            alt={cat.alt}
             loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
           />
@@ -215,6 +221,12 @@ const QualityLab = () => {
 };
 
 const ProducePage = () => {
+  useDocumentHead({
+    title: 'Fresh Wholesale Produce',
+    description: 'Browse our wholesale produce collection: apples, cherries, leafy greens, mixed vegetables, onions, zucchini and squash. 100% quality inspected at the Ontario Food Terminal.',
+    canonical: '/produce',
+  });
+
   return (
     <div className="min-h-screen bg-brand-cream pt-24 lg:pt-32">
       <ProduceGrid />
