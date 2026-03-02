@@ -56,14 +56,6 @@ export const Footer = () => {
                         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-12">
                             <div>
                                 <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Location 1</h5>
-                                <p className="text-[12px] font-bold uppercase tracking-widest text-brand-cream/60 mb-2">Evans Ave. Warehouse</p>
-                                <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
-                                    <p>33 Connell Ct, Etobicoke</p>
-                                    <p>ON M8Z 1E8</p>
-                                </address>
-                            </div>
-                            <div>
-                                <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-6 md:mb-10">Location 2</h5>
                                 <p className="text-[12px] font-bold uppercase tracking-widest text-brand-cream/60 mb-2">Ontario Food Terminal</p>
                                 <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
                                     <p>165 The Queensway, Suite #237</p>
