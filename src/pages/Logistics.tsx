@@ -121,7 +121,7 @@ const LocationsSection = () => {
   const locations = [
     {
       label: 'Location 1',
-      name: 'Evans Ave. Warehouse',
+      name: '',
       address: '33 Connell Ct, Etobicoke, ON M8Z 1E8',
       postal: 'ON M8Z 1E8',
     },
@@ -130,7 +130,7 @@ const LocationsSection = () => {
       name: 'Ontario Food Terminal',
       address: '165 The Queensway, Suite #237, Toronto.',
       postal: 'ON M8Y 1H8',
-      tel: '(416) 259-5479',
+      tel: '416-259-5000',
     },
   ];
 
