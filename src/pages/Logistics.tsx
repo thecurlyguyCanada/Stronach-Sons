@@ -120,7 +120,13 @@ const CommitmentSection = () => {
 const LocationsSection = () => {
   const locations = [
     {
-      label: 'Location',
+      label: 'Location 1',
+      name: 'Evans Ave. Warehouse',
+      address: '33 Connell Ct, Etobicoke, ON M8Z 1E8',
+      postal: 'ON M8Z 1E8',
+    },
+    {
+      label: 'Location 2',
       name: 'Ontario Food Terminal',
       address: '165 The Queensway, Suite #237, Toronto.',
       postal: 'ON M8Y 1H8',
@@ -131,7 +137,7 @@ const LocationsSection = () => {
   return (
     <section id="locations" className="py-24 md:py-32 bg-[#e5e5e0] relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div className="flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           {locations.map((loc, idx) => (
             <motion.div
               key={idx}
@@ -139,7 +145,7 @@ const LocationsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center space-y-6 max-w-md"
+              className="text-center space-y-6"
             >
               <h3 className="text-2xl font-serif font-bold text-brand-ink tracking-tight">
                 {loc.label}
