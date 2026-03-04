@@ -67,7 +67,7 @@ export const Footer = () => {
                                 <address className="not-italic text-[13px] md:text-sm text-brand-cream/40 space-y-1 mb-6">
                                     <p>165 The Queensway, Suite #237</p>
                                     <p>Toronto, ON M8Y 1H8</p>
-                                    <p className="pt-2 text-brand-cream/60">Tel. (416) 259-5479</p>
+                                    <p className="pt-2 text-brand-cream/60">416-259-5000</p>
                                 </address>
                                 <a
                                     href="mailto:stronson@stronachandosons.ca"
